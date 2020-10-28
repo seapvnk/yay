@@ -1,25 +1,17 @@
-<nav class="navbar">
-    
-    <a class="logo" href="#"> yay! </a>
-    
-    <div class="items">
-        @if (true)
-            <div class="item">
-                <a class="button" href="#">Sign up</a>
-            </div>
-            <div class="item">
-                <a class="button" href="#">Sign up</a>
-            </div>
-        @else
-            <div class="item">
-                <form action="javascript:void(0)">
-                    <input class="" type="text" placeholder="Search a user">
-                    <button class="">search <i class="icofont-search"></i></button>
-                </form>
-            </div>
-        @endif
-        
-    </div>
+<header class="navbar bg-primary container" style="padding: .5rem">
+  <section class="navbar-section">
+    <a href="..." class="navbar-brand mr-2 text-light text-bold">yay!</a>
+  </section>
 
-
-</nav>
+  <section class="navbar-section">
+    @if (true)
+        <a href="/alert" class="btn btn-link text-light">Sign up</a>
+        <a href="..." class="btn btn-link text-light">Sign in</a>
+    @else
+        <div class="input-group input-inline">
+        <input class="form-input" type="text" placeholder="search">
+        <button class="btn btn-primary input-group-btn">Search <i class="icofont-search"></i></button>
+        </div>
+    @endif
+  </section>
+</header>

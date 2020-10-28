@@ -15,3 +15,6 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::get('/', [HomeController::class, 'index']);
+Route::get('/alert', function() {
+    return redirect('/')->with('info', 'You have sign up!');
+});

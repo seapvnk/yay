@@ -12,7 +12,5 @@ const mix = require('laravel-mix');
  */
 
 mix.styles([
-    'resources/css/normalize.css',
-    'resources/css/skeleton.css',
     'resources/css/app.css',
 ], 'public/css/all.css');

@@ -1,6 +1,12 @@
 @extends('templates.default')
 
 @section('content')
-    <h1>Welcome to yay</h1>
-    <p>have fun!</p>
+    
+    <div class="hero bg-primary">
+        <div class="hero-body">
+            <h1>Welcome to Yay</h1>
+            <p>Take a look and have some fun :p</p>
+        </div>
+    </div>
+
 @stop

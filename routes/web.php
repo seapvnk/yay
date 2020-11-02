@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-
+use App\Http\Controllers\AuthController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +14,14 @@ use App\Http\Controllers\HomeController;
 |
 */
 
+// home routes
 Route::get('/', [HomeController::class, 'index']);
+
+// signup routes
+Route::get('/signup', [AuthController::class, 'getSignup']);
+Route::post('/signup', [AuthController::class, 'postSignup']);
+
+// testing routes
 Route::get('/alert', function() {
     return redirect('/')->with('info', 'You have sign up!');
 });

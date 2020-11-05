@@ -6,7 +6,7 @@
   <section class="navbar-section">
     @if (true)
         <a href="/signup" class="btn btn-link text-light">Sign up</a>
-        <a href="/alert" class="btn btn-link text-light">Sign in</a>
+        <a href="#" class="btn btn-link text-light">Sign in</a>
     @else
         <div class="input-group input-inline">
         <input class="form-input" type="text" placeholder="search">

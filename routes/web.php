@@ -16,12 +16,13 @@ use App\Http\Controllers\AuthController;
 
 // home routes
 Route::get('/', [HomeController::class, 'index']);
+Route::get('/home', [HomeController::class, 'index']);
 
 // signup routes
 Route::get('/signup', [AuthController::class, 'getSignup']);
 Route::post('/signup', [AuthController::class, 'postSignup']);
 
 // testing routes
-Route::get('/alert', function() {
-    return redirect('/')->with('info', 'You have sign up!');
-});
+#Route::get('/alert', function() {
+#    return redirect('/')->with('info', 'You have sign up!');
+#});

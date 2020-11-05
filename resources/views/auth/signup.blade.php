@@ -12,13 +12,13 @@
                 </p>
                 
                 <div class="form-group">
-                    <label class="form-label  {{$errors->has('username')? 'text-error' : ''}}" for="name">Nickname</label>
+                    <label class="form-label  {{$errors->has('username')? 'text-error' : ''}}" for="username">Username</label>
                     <input 
                         class="form-input  {{$errors->has('username')? 'is-error' : ''}}" 
                         type="text" 
                         id="name" 
                         name="username"
-                        placeholder="Enter your nickname"
+                        placeholder="Enter your username"
                         value="{{ Request::old('username') ?? '' }}"
                     >
                     @if ($errors->has('username'))

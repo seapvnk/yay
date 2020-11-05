@@ -1,16 +1,12 @@
 <style>
   .tile {
+    align-items: center;
     padding: .6rem;
     margin: 1rem 0;
   }
 
   .tile .tile-title {
     font-size: 1.1rem;
-    margin: 0;
-  }
-  
-  .tile .tile-subtitle {
-    font-size: .8rem;
     margin: 0;
   }
 </style>
@@ -29,9 +25,10 @@
     </figure>
   </div>
   <div class="tile-content">
-    <a href="#" class="tile-title text-primary">{{ "@" . $user->username }}</a>
+    <a href="#" class="tile-title text-primary">{{ "@" . $user->username }}</p>
     <p class="tile-subtitle text-gray">{{ $user->location?? '' }}</p>
   </div>
-    <a href="#" class="btn btn-lg">add friend</a>
+  <div>
+    <button class="btn btn-lg">add friend</button>
   </div>
 </div>

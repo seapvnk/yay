@@ -1,5 +1,5 @@
 @if (Session::has('info'))
-    <div class="toast toast-success" style="border-radius:0">
+    <div class="toast" style="border-radius:0">
         {{ Session::get('info') }}
         <button 
             onclick="this.parentElement.style.display='none';"

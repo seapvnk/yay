@@ -18,9 +18,14 @@ use App\Http\Controllers\AuthController;
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/home', [HomeController::class, 'index']);
 
-// signup routes
+// sign up routes
 Route::get('/signup', [AuthController::class, 'getSignup']);
 Route::post('/signup', [AuthController::class, 'postSignup']);
+
+// sign in routes
+Route::get('/signin', [AuthController::class, 'getSignin']);
+Route::post('/signin', [AuthController::class, 'postSignin']);
+
 
 // testing routes
 #Route::get('/alert', function() {

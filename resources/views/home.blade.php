@@ -2,7 +2,7 @@
 
 @section('content')
     
-    <div class="hero bg-primary container">
+    <div class="hero container bg-primary">
         <div class="hero-body">
             <h1>Welcome to Yay</h1>
             <p>

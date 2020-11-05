@@ -39,4 +39,9 @@ class User extends Authenticatable
             return $this->username;
         }
     }
+
+    public function getAvatarURL()
+    {
+        return "https://www.gravatar.com/avatar/{ $this->email }?d=mm";
+    }
 }

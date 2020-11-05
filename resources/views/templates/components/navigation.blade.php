@@ -8,16 +8,19 @@
         <a href="#" class="mx-2 text-light">Friends</a>
       </div>
 
-      <div 
-        class="input-group input-inline mx-2"
-      >
-        <input class="form-input" type="text" placeholder="search">
-        <button
-          class="mx-1 btn input-group-btn" 
+      <form action="/search">
+        @csrf
+        <div 
+          class="input-group input-inline mx-2"
         >
-          Search <i class="icofont-search"></i>
-        </button>
-      </div>
+            <input class="form-input" name="query" type="text" placeholder="search">
+            <button
+              class="mx-1 btn input-group-btn" 
+            >
+              Search <i class="icofont-search"></i>
+            </button>
+        </div>
+      </form>
     @endif
   </section>
 
@@ -30,7 +33,7 @@
       <section class="navbar-section">
         <a 
           href="#" 
-          class="btn btn-link text-light btn-lg"
+          class="btn btn-link text-light text-bold btn-lg"
         >
           {{ "@" . Auth::user()->getNameOrUsername() }}
         </a>

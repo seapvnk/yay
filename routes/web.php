@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\SearchController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,6 +32,9 @@ Route::post('/signin', [AuthController::class, 'postSignin'])
 
 // sign out route
 Route::get('/signout', [AuthController::class, 'signOut']);
+
+// search routes
+Route::get('/search', [SearchController::class, 'getResults']);
 
 
 // testing routes

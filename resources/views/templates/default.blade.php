@@ -9,7 +9,7 @@
     
     <title>yay!</title>
 </head>
-<body style="padding: 0; margin: 0" class="bg-dark">
+<body style="padding: 0; margin: 0">
 
     @include('templates.components.navigation')
 

@@ -6,7 +6,7 @@
     <form method="post" action="/signin">
         @csrf
         <div class="p-centered" style="width: 100vh; max-width: 90%">
-                <h1 class="text-center text-primary my-2">Sign in</h1>
+                <h1 class="text-center text-light my-2">Sign in</h1>
                 <p class="text-center">
                     Welcome back! Sign in your account.
                 </p>

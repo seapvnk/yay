@@ -26,6 +26,9 @@ Route::post('/signup', [AuthController::class, 'postSignup']);
 Route::get('/signin', [AuthController::class, 'getSignin']);
 Route::post('/signin', [AuthController::class, 'postSignin']);
 
+// sign out route
+Route::get('/signout', [AuthController::class, 'signOut']);
+
 
 // testing routes
 #Route::get('/alert', function() {

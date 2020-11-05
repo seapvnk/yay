@@ -36,7 +36,7 @@
         </a>
 
         <a href="#" class="mx-1 text-light">Update profile</a>
-        <a href="#" class="mx-1 text-light">Sign out</a>
+        <a href="/signout" class="mx-1 text-light">Sign out</a>
         
       </section>
       

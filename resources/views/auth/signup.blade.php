@@ -6,7 +6,7 @@
     <form method="post" action="/signup">
         @csrf
         <div class="p-centered" style="width: 100vh; max-width: 90%">
-                <h1 class="text-center text-primary my-2">Sign up</h1>
+                <h1 class="text-center text-light my-2">Sign up</h1>
                 <p class="text-center">
                     Join us by creating an account!
                 </p>

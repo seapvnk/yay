@@ -19,12 +19,15 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/home', [HomeController::class, 'index']);
 
 // sign up routes
-Route::get('/signup', [AuthController::class, 'getSignup']);
-Route::post('/signup', [AuthController::class, 'postSignup']);
-
+Route::get('/signup', [AuthController::class, 'getSignup'])
+        ->middleware('guest');
+Route::post('/signup', [AuthController::class, 'postSignup'])
+        ->middleware('guest');
 // sign in routes
-Route::get('/signin', [AuthController::class, 'getSignin']);
-Route::post('/signin', [AuthController::class, 'postSignin']);
+Route::get('/signin', [AuthController::class, 'getSignin'])
+        ->middleware('guest');
+Route::post('/signin', [AuthController::class, 'postSignin'])
+        ->middleware('guest');
 
 // sign out route
 Route::get('/signout', [AuthController::class, 'signOut']);

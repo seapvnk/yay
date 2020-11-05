@@ -12,6 +12,18 @@ class Authenticate extends Middleware
      * @param  \Illuminate\Http\Request  $request
      * @return string|null
      */
+
+    public function handle($request, Closure $next)
+    {
+        if ($this->auth->guest()) {
+            if ($request->ajax()) {
+                return response('Unauthorized.', 401);
+            } else {
+                return redirect()->guest('auth.signin');
+            }
+        }
+    }
+
     protected function redirectTo($request)
     {
         if (! $request->expectsJson()) {

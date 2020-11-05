@@ -13,19 +13,21 @@
 
 <div class="tile bg-gray">
   <div class="tile-icon">
-    <figure 
-      class="avatar avatar-xl" 
-      data-initial="{{ strtoupper($user->username[0]) }}" 
-      style="background-color: #5755d9;"
-    >
-      <img 
-        src="{{ $user->getAvatarURL() }}" 
-        alt=""
+    <a href="/user/{{ $user->username }}">
+      <figure 
+        class="avatar avatar-xl" 
+        data-initial="{{ strtoupper($user->username[0]) }}" 
+        style="background-color: #5755d9;"
       >
-    </figure>
+        <img 
+          src="{{ $user->getAvatarURL() }}" 
+          alt=""
+        >
+      </figure>
+    </a>
   </div>
   <div class="tile-content">
-    <a href="#" class="tile-title text-primary">{{ "@" . $user->username }}</p>
+    <a href="/user/{{ $user->username }}" class="tile-title text-primary">{{ "@" . $user->username }}</a>
     <p class="tile-subtitle text-gray">{{ $user->location?? '' }}</p>
   </div>
   <div>

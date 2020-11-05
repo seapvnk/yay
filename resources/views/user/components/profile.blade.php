@@ -51,9 +51,12 @@
                     <div class="col-1"></div>
                 
                 @endif
-                <div class="col-4">
-                    <button class="my-2 btn btn-lg">+Add friend</button>
-                </div>
+
+                @if ($user->username !== Auth::user()->username)
+                    <div class="col-4">
+                        <button class="my-2 btn btn-lg">+Add friend</button>
+                    </div>
+                @endif
             </div>
             
         </div>

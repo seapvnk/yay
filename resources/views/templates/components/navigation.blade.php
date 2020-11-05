@@ -31,16 +31,18 @@
     </section>
   @else
       <section class="navbar-section">
-        <a 
-          href="#" 
-          class="btn btn-link text-light text-bold btn-lg"
-        >
-          {{ "@" . Auth::user()->getNameOrUsername() }}
-        </a>
+
 
         <a href="#" class="mx-1 text-light">Update profile</a>
         <a href="/signout" class="mx-1 text-light">Sign out</a>
         
+        <a 
+          href="/user/{{ Auth::user()->username }}" 
+          class="btn btn-link text-light text-bold btn-lg"
+        >
+          <img class="avatar" src="{{ Auth::user()->getAvatarURL() }}" alt="">
+          {{ "@" . Auth::user()->getNameOrUsername() }}
+        </a>
       </section>
       
   @endif

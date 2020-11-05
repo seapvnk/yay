@@ -12,40 +12,48 @@
                 </p>
                 
                 <div class="form-group">
-                    <label class="form-label" for="name">Nickname</label>
+                    <label class="form-label  {{$errors->has('username')? 'text-error' : ''}}" for="name">Nickname</label>
                     <input 
-                        class="form-input" 
+                        class="form-input  {{$errors->has('username')? 'is-error' : ''}}" 
                         type="text" 
                         id="name" 
-                        name="name"
-                        placeholder="Enter your name"
-                        required
+                        name="username"
+                        placeholder="Enter your nickname"
+                        value="{{ Request::old('username') ?? '' }}"
                     >
+                    @if ($errors->has('username'))
+                        <span class="text-error">{{ $errors->first('username') }}</span>
+                    @endif
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label" for="email">E-mail</label>
+                    <label class="form-label  {{$errors->has('email')? 'text-error' : ''}}" for="email">E-mail</label>
                     <input 
-                        class="form-input" 
+                        class="form-input  {{$errors->has('email')? 'is-error' : ''}}" 
                         type="email" 
                         id="email" 
                         name="email"
                         placeholder="Enter your e-mail"
-                        required
+                        value="{{ Request::old('email') ?? '' }}"
                     >
+                    @if ($errors->has('email'))
+                        <span class="text-error">{{ $errors->first('email') }}</span>
+                    @endif
                 </div>
 
 
                 <div class="form-group">
-                    <label class="form-label" for="password">Password</label>
+                    <label class="form-label  {{$errors->has('password')? 'text-error' : ''}}" for="password">Password</label>
                     <input
-                        class="form-input" 
+                        class="form-input  {{$errors->has('password')? 'is-error' : ''}}" 
                         type="password" 
                         id="password" 
                         name="password"
                         placeholder="Enter your password"
-                        required
                     >
+                    @if ($errors->has('password'))
+                        <span class="text-error">{{ $errors->first('password') }}</span>
+                    @endif
                 </div>
 
                 <div class="form-group" style="display: flex; justify-content: flex-end">

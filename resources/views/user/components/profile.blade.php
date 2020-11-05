@@ -2,15 +2,26 @@
 
 @section('content')
 <style>
-    .profile-avatar {
+    .hero .profile-avatar img, .profile-avatar {
         width: 250px;
         height: 250px;
+    }
+    .profile-avatar {
+        border-radius: 50%;
+    }
+
+    @media screen and (max-width: 756px) {
+        .hero .profile-avatar img, .profile-avatar {
+            width: 150px;
+            height: 150px;
+        }
+    }
+
+    .profile-avatar {
         border-radius: 50%;
     }
     
     .hero .profile-avatar img {
-        width: 250px;
-        height: 250px;
         border-radius: 50%;
     }
 
@@ -31,7 +42,7 @@
         <figure 
             class="profile-avatar" 
             data-initial="{{ strtoupper($user->username[0]) }}" 
-            style="background-color: #5755d9;"
+            style="background-color: #0004;"
         >
             <img 
                 src="{{ $user->getProfileAvatarURL(250) }}" 

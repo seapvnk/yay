@@ -2,6 +2,6 @@
 
 @section('content')
     <div class="container">
-        @include ('user.components.profile')
+        @include ('user.components.edit')
     </div>
 @stop

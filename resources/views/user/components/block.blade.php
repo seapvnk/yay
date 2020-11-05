@@ -17,7 +17,7 @@
       <figure 
         class="avatar avatar-xl" 
         data-initial="{{ strtoupper($user->username[0]) }}" 
-        style="background-color: #5755d9;"
+        style="background-color: #0004;"
       >
         <img 
           src="{{ $user->getAvatarURL() }}" 

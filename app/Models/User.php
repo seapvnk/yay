@@ -51,14 +51,17 @@ class User extends Authenticatable
             return $this->username;
         }
     }
-    
+
     public function getAvatarURL()
     {
-        return "https://www.gravatar.com/avatar/{ $this->email }?d=mm";
+        $seed = $this->avatar_seed?? md5($this->email);
+
+        return "https://avatars.dicebear.com/api/human/$seed.svg";
     }
 
+    // Remove this ~ just here to keep legacy
     public function getProfileAvatarURL(int $size)
     {
-        return "https://www.gravatar.com/avatar/{ $this->email }?d=mm&s=$size";
+        return $this->getAvatarURL();
     }
 }

@@ -38,8 +38,10 @@ Route::get('/signout', [AuthController::class, 'signOut']);
 // search route
 Route::get('/search', [SearchController::class, 'getResults']);
 
-// profile route
+// profiles route
 Route::get('/user/{username}', [ProfileController::class, 'getProfile']);
+
+Route::get('profile/edit', [ProfileController::class, 'getProfileEdit']);
 
 // testing routes
 #Route::get('/alert', function() {

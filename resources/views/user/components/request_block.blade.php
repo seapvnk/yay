@@ -36,6 +36,6 @@
     <p class="tile-subtitle text-gray">{{ $user->location?? '' }}</p>
   </div>
   <div>
-    <a href="/friends/add/{{ $user->username }}" class="btn btn-lg">add friend</a>
+    <a href="/friends/accept/{{ $user->username }}" class="btn btn-lg">accept friend request</a>
   </div>
 </div>

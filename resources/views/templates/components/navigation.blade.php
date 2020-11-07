@@ -4,8 +4,8 @@
     
     @if (Auth::check())
       <div style="margin-left: 2rem">
-        <a href="#" class="mx-1 text-light">Timeline</a>
-        <a href="#" class="mx-2 text-light">Friends</a>
+        <a href="/home" class="mx-1 text-light">Timeline</a>
+        <a href="/friends" class="mx-2 text-light">Friends</a>
       </div>
 
       <form action="/search">

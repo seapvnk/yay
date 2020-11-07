@@ -63,11 +63,20 @@
                 
                 @endif
 
-                @if ($user->username !== Auth::user()->username)
-                    <div class="col-4">
-                        <button class="my-2 btn btn-lg">+Add friend</button>
-                    </div>
-                @endif
+
+                <div class="col-4">
+                    @if (Auth::user()->hasFriendRequestPending($user))
+                        <p>Waiting for {{ $user->getNameOrUsername() }} to accept you...</p>
+                    @elseif (Auth::user()->hasFriendRequestReceived($user))
+                        <a href="/friends/accept/{{ $user->username }}" class="my-2 btn btn-lg">Accept friend request</a>
+                    @elseif (Auth::user()->isFriendWith($user))
+                        <p>You and {{ $user->getNameOrUsername() }} are friends.</p>
+                    @else
+                        @if ($user->username !== Auth::user()->username)
+                            <a href="/friends/add/{{ $user->username }}" class="my-2 btn btn-lg">+Add friend</a>
+                        @endif
+                    @endif
+                </div>
             </div>
             
         </div>

@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\FriendsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +44,11 @@ Route::get('/user/{username}', [ProfileController::class, 'getProfile']);
 
 Route::get('profile/edit', [ProfileController::class, 'getProfileEdit']);
 Route::post('profile/edit', [ProfileController::class, 'postProfileEdit']);
+
+// friends routes
+Route::get('/friends', [FriendsController::class, 'getIndex']);
+Route::get('/friends/add/{username}', [FriendsController::class, 'getAdd']);
+Route::get('/friends/accept/{username}', [FriendsController::class, 'getAccept']);
 
 // testing routes
 #Route::get('/alert', function() {

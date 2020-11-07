@@ -42,6 +42,7 @@ Route::get('/search', [SearchController::class, 'getResults']);
 Route::get('/user/{username}', [ProfileController::class, 'getProfile']);
 
 Route::get('profile/edit', [ProfileController::class, 'getProfileEdit']);
+Route::post('profile/edit', [ProfileController::class, 'postProfileEdit']);
 
 // testing routes
 #Route::get('/alert', function() {

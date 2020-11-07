@@ -34,8 +34,8 @@
     </style>
 
 <div class="hero container bg-primary">
-    <h1 class="text-light text-center">Edit profile</h1>
-    <form class="form" name="edit">
+    <h1 class="text-light text-center">Edit profile {{ Auth::user()->avatar_seed }}</h1>
+    <form class="form" method="post" action="/profile/edit" name="edit">
         @csrf
         <div class="columns">
             <div class="col-6 col-sm-12">
@@ -55,42 +55,51 @@
             </div>
             <div class="col-6 col-sm-12">
                 <div class="form-group">
-                    <label class="form-label" for="first_name">First name</label>
+                    <label class="form-label {{$errors->has('first_name')? 'text-error' : ''}}" for="first_name">First name</label>
                     <input 
                         class="form-input" 
                         type="text" 
                         id="first_name" 
                         name="first_name" 
                         placeholder="First name"
-                        value="{{ Auth::user()->first_name ?? '' }}"
+                        value="{{ Auth::user()->first_name ?? Request::old('first_name')}}"
                     >
+                    @if ($errors->has('first_name'))
+                        <span class="text-error">{{ $errors->first('first_name') }}</span>
+                    @endif
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label" for="last_name">Last name</label>
+                    <label class="form-label {{$errors->has('last_name')? 'text-error' : ''}}" for="last_name">Last name</label>
                     <input 
                         class="form-input" 
                         type="text" 
                         id="last_name" 
                         name="last_name" 
                         placeholder="Last name"
-                        value="{{ Auth::user()->last_name ?? '' }}"
+                        value="{{ Auth::user()->last_name ?? Request::old('last_name')}}"
                     >
+                    @if ($errors->has('last_name'))
+                        <span class="text-error">{{ $errors->first('last_name') }}</span>
+                    @endif
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label" for="location">Location</label>
+                    <label class="form-label {{$errors->has('location')? 'text-error' : ''}}" for="location">Location</label>
                     <input 
                         class="form-input" 
                         type="text" 
                         id="location" 
                         name="location" 
                         placeholder="Location"
-                        value="{{ Auth::user()->location ?? '' }}"
+                        value="{{ Auth::user()->location ?? Request::old('location')}}"
                     >
+                    @if ($errors->has('location'))
+                        <span class="text-error">{{ $errors->first('location') }}</span>
+                    @endif
                 </div>
 
-                <input type="hidden" name="avatar_seed">
+                <input type="hidden" name="avatar_seed" value="{{ Auth::user()->avatar_seed }}">
                 
                 <button class="btn float-right btn-lg btn-success">save</button>
             </div>

@@ -54,7 +54,7 @@ class User extends Authenticatable
 
     public function getAvatarURL()
     {
-        $seed = $this->avatar_seed?? md5($this->email);
+        $seed = $this->avatar_seed;
 
         return "https://avatars.dicebear.com/api/human/$seed.svg";
     }

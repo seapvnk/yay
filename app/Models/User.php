@@ -59,6 +59,10 @@ class User extends Authenticatable
         return "https://avatars.dicebear.com/api/human/$seed.svg";
     }
 
+    public function statuses()
+    {
+        return $this->hasMany(Status::class, 'user_id');
+    }
 
     public function friendsOfMine()
     {

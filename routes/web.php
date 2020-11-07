@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FriendsController;
+use App\Http\Controllers\StatusController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +50,9 @@ Route::post('profile/edit', [ProfileController::class, 'postProfileEdit']);
 Route::get('/friends', [FriendsController::class, 'getIndex']);
 Route::get('/friends/add/{username}', [FriendsController::class, 'getAdd']);
 Route::get('/friends/accept/{username}', [FriendsController::class, 'getAccept']);
+
+// status post
+Route::post('/status', [StatusController::class, 'postStatus']);
 
 // testing routes
 #Route::get('/alert', function() {

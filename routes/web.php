@@ -50,6 +50,7 @@ Route::post('profile/edit', [ProfileController::class, 'postProfileEdit']);
 Route::get('/friends', [FriendsController::class, 'getIndex']);
 Route::get('/friends/add/{username}', [FriendsController::class, 'getAdd']);
 Route::get('/friends/accept/{username}', [FriendsController::class, 'getAccept']);
+Route::get('/friends/remove/{username}', [FriendsController::class, 'getRemoveFriend']);
 
 // status routes
 Route::post('/status', [StatusController::class, 'postStatus']);

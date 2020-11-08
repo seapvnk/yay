@@ -125,6 +125,12 @@ class User extends Authenticatable
         return (bool) $this->friends()->where('id', $user->id)->count();
     }
 
+    public function deleteFriend(User $user)
+    {
+        $this->friendOf()->detach($user->id);
+        $this->friendsOfMine()->detach($user->id);
+    }
+
     public function hasLikedStatus(Status $status)
     {
         return (bool) $status->likes->where('user_id', $this->id)->count();

@@ -66,8 +66,8 @@
 <div class="status-content">
     <p>{{ $status->body }}</p>
     <div class="like-section">
-        <a href="#" class="text-primary">Like <i class="icofont-thumbs-up"></i></a>
-        <span class="text-gray">10 likes</span>
+        <a href="/status/{{ $status->id }}/like" class="text-primary">Like <i class="icofont-thumbs-up"></i></a>
+        <span class="text-gray">{{ $status->likes->count() }} {{Str::plural('like', $status->likes->count() )}}</span>
 </div>
 
   <div class="reply">

@@ -49,6 +49,9 @@
     >
         {{ $reply->created_at->diffForHumans() }}
     </span>
+    <br>
+    <a href="/status/{{ $reply->id }}/like" class="text-primary">Like <i class="icofont-thumbs-up"></i></a>
+    <span class="text-gray">{{ $reply->likes->count() }} {{Str::plural('like', $reply->likes->count() )}}</span>
     <div class="reply">
         {{ $reply->body }}
     </div>

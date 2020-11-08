@@ -51,9 +51,11 @@ Route::get('/friends', [FriendsController::class, 'getIndex']);
 Route::get('/friends/add/{username}', [FriendsController::class, 'getAdd']);
 Route::get('/friends/accept/{username}', [FriendsController::class, 'getAccept']);
 
-// status post
+// status routes
 Route::post('/status', [StatusController::class, 'postStatus']);
 Route::post('/status/{statusID}/reply', [StatusController::class, 'postReply']);
+Route::get('/status/{statusID}/like', [StatusController::class, 'getLike']);
+
 // testing routes
 #Route::get('/alert', function() {
 #    return redirect('/')->with('info', 'You have sign up!');

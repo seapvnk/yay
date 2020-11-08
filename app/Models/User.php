@@ -125,6 +125,16 @@ class User extends Authenticatable
         return (bool) $this->friends()->where('id', $user->id)->count();
     }
 
+    public function hasLikedStatus(Status $status)
+    {
+        return (bool) $status->likes->where('user_id', $this->id)->count();
+    }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class, 'user_id');
+    }
+
     // Remove this ~ just here to keep legacy
     public function getProfileAvatarURL(int $size)
     {

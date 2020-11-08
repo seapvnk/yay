@@ -2,7 +2,7 @@
 
 @section('content')
 <style>
-    .hero .profile-avatar img, .profile-avatar {
+    .profile-cover .profile-avatar img, .profile-avatar {
         width: 250px;
         height: 250px;
     }
@@ -11,7 +11,7 @@
     }
 
     @media screen and (max-width: 756px) {
-        .hero .profile-avatar img, .profile-avatar {
+        .profile-cover .profile-avatar img, .profile-avatar {
             width: 150px;
             height: 150px;
         }
@@ -21,7 +21,7 @@
         border-radius: 50%;
     }
     
-    .hero .profile-avatar img {
+    .profile-cover .profile-avatar img {
         border-radius: 50%;
     }
 
@@ -30,6 +30,16 @@
         align-items: center;
         justify-content: center;
     }
+    
+    .profile-status {
+        width: 80%;
+        margin: auto;
+    }
+
+    .profile-cover {
+        height: max-content;
+        padding: 0;
+    }
 
     .rows p {
         margin: 0;
@@ -37,7 +47,7 @@
     
 </style>
 
-<div class="hero container bg-primary">
+<div class="profile-cover bg-primary">
     <div class="hero-body profile-index">
         <figure 
             class="profile-avatar" 
@@ -60,7 +70,6 @@
                     </div>
                 @else
                     <div class="col-1"></div>
-                
                 @endif
 
 
@@ -79,6 +88,29 @@
                 </div>
             </div>
             
+        </div>
+    </div>
+</div>
+
+<div class="container profile-status">
+    <div class="row">
+            @if (!$statuses->count())
+                <div class="empty">
+                    <div class="empty-icon">
+                        <i style="font-size: 16vh" class="icofont-users"></i>
+                    </div>
+                    <p class="empty-title h5">Nothing to see :p</p>
+                    <p class="empty-subtitle">
+                        There's nothing in your timeline, yet.
+                    </p>
+                </div>
+            @else
+                @foreach ($statuses as $status)
+                    @include('timeline.components.status')
+                @endforeach
+            @endif
+
+            {{ $statuses->render() }}
         </div>
     </div>
 </div>

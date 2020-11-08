@@ -57,6 +57,7 @@
                 @endforeach
             @endif
 
+            {{ $statuses->render() }}
         </div>
     </div>
 @stop

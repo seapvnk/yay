@@ -68,28 +68,41 @@
     <div class="like-section">
         <a href="#" class="text-primary">Like <i class="icofont-thumbs-up"></i></a>
         <span class="text-gray">10 likes</span>
-    </div>
-    
-    <div class="reply">
-            <form action="#" method="post">
-                <div class="form-group">
-                    <textarea class="form-input" style="resize: none" name="status" id="status" rows="3"></textarea>
-                </div>
-                <input type="hidden" name="_token" value="{{ Session::token() }}">
-                @if ($errors->has('status'))
-                    <div>
-                        <span class="text-error">
-                            {{ $errors->first('reply') }}
-                        </span>
-                    </div>
-                @endif
-                <button
-                    role="submit" 
-                    class="btn btn-lg {{ $errors->has('reply')? 'btn-error' : '' }}"
-                >
-                    Reply
-                </button>
-            </form>
-    </div>
+</div>
+
+  <div class="reply">
+      <form action="/status/{{ $status->id}}/reply" method="post">
+          @csrf
+          <div class="form-group">
+              <textarea 
+                class="form-input {{ $errors->has("reply-{$status->id}")? 'is-error' : '' }}" 
+                style="resize: none" 
+                name="reply-{{ $status->id }}" 
+                id="status" 
+                rows="3">
+              </textarea>
+          </div>
+          <input type="hidden" name="_token" value="{{ Session::token() }}">
+          @if ($errors->has("reply-{$status->id}"))
+              <div>
+                  <span class="text-error">
+                      {{ $errors->first("reply-{$status->id}") }}
+                  </span>
+              </div>
+          @endif
+          <input type="hidden" name="_token" value="{{ Session::token() }}">
+          <button
+              role="submit" 
+              class="btn btn-lg {{ $errors->has('reply')? 'btn-error' : '' }}"
+          >
+              Reply
+          </button>
+      </form>
+      @if ($status->replies->count() > 0)
+        @foreach($status->replies as $reply)
+          @include('timeline.components.reply')
+        @endforeach
+      @endif
+  </div>
 </div>
 </div>

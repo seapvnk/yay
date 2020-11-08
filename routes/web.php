@@ -53,7 +53,7 @@ Route::get('/friends/accept/{username}', [FriendsController::class, 'getAccept']
 
 // status post
 Route::post('/status', [StatusController::class, 'postStatus']);
-
+Route::post('/status/{statusID}/reply', [StatusController::class, 'postReply']);
 // testing routes
 #Route::get('/alert', function() {
 #    return redirect('/')->with('info', 'You have sign up!');

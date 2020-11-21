@@ -21,9 +21,6 @@
           <li class="nav-item">
             <a class="nav-link" href="/profile/edit">Edit profile</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/signout">Sign out</a>
-          </li>
         @else
           <li class="nav-item">
             <a class="nav-link" href="/signup">Sign up</a>
@@ -42,8 +39,9 @@
         <a 
           href="/user/{{ Auth::user()->username }}" 
           class="btn btn-link text-light text-bold btn-lg">
-          <img class="rounded-circle" style="background-color: #0004; width: 64px" src="{{ Auth::user()->getAvatarURL() }}" alt="">
+          <img class="rounded-circle" style="background-color: #0004; width: 38px" src="{{ Auth::user()->getAvatarURL() }}" alt="">
         </a>
+        <a href="/signout" class="text-danger">Sign out</a>
       @endif
     </div>
   </nav>

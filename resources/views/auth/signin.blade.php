@@ -3,18 +3,16 @@
 @section('content')
 
 <div class="container">
-    <form method="post" action="/signin">
+    <form method="post" action="/signin" class="d-flex justify-content-center">
         @csrf
         <div class="p-centered" style="width: 100vh; max-width: 90%">
-                <h1 class="text-center text-primary my-2">Sign in</h1>
-                <p class="text-center">
-                    Welcome back! Sign in your account.
-                </p>
+                <h1 class="text-secondary my-2">Sign in</h1>
+                <h4 class="text-muted mb-4">Welcome back! Sign in your account.</h4>
                 
                 <div class="form-group">
-                    <label class="form-label  {{$errors->has('email')? 'text-error' : ''}}" for="email">E-mail</label>
+                    <label class="form-label  {{$errors->has('email')? 'is-invalid' : ''}}" for="email">Password:</label>
                     <input 
-                        class="form-input  {{$errors->has('email')? 'is-error' : ''}}" 
+                        class="form-control  {{$errors->has('email')? 'is-invalid' : ''}}" 
                         type="email" 
                         id="email" 
                         name="email"
@@ -22,30 +20,27 @@
                         value="{{ Request::old('email') ?? '' }}"
                     >
                     @if ($errors->has('email'))
-                        <span class="text-error">{{ $errors->first('email') }}</span>
+                        <small class="text-danger">{{ $errors->first('email') }}</small>
                     @endif
                 </div>
 
-
                 <div class="form-group">
-                    <label class="form-label  {{$errors->has('password')? 'text-error' : ''}}" for="password">Password</label>
-                    <input
-                        class="form-input  {{$errors->has('password')? 'is-error' : ''}}" 
+                    <label class="form-label  {{$errors->has('password')? 'is-invalid' : ''}}" for="password">Password:</label>
+                    <input 
+                        class="form-control  {{$errors->has('email')? 'is-invalid' : ''}}" 
                         type="password" 
                         id="password" 
                         name="password"
                         placeholder="Enter your password"
                     >
-                    @if ($errors->has('password'))
-                        <span class="text-error">{{ $errors->first('password') }}</span>
+                    @if ($errors->has('email'))
+                        <small class="text-danger">{{ $errors->first('password') }}</small>
                     @endif
                 </div>
 
-                <div class="form-group">
-                    <label class="form-checkbox">
-                        <input type="checkbox" name="remember">
-                        <i class="form-icon"></i> Remember me
-                    </label>
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" name="remember"  class="custom-control-input" id="customSwitch1">
+                    <label class="custom-control-label" for="customSwitch1">Remember me</label>
                 </div>
 
                 <div class="form-group" style="display: flex; justify-content: flex-end">

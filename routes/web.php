@@ -40,24 +40,42 @@ Route::get('/signout', [AuthController::class, 'signOut']);
 // search route
 Route::get('/search', [SearchController::class, 'getResults']);
 
-// profiles route
+// user route
 Route::get('/user/{username}', [ProfileController::class, 'getProfile']);
 
-Route::get('profile/edit', [ProfileController::class, 'getProfileEdit']);
-Route::post('profile/edit', [ProfileController::class, 'postProfileEdit']);
+// profile routes
+Route::prefix('/profile')->name('profile.')->group(function() {
+        Route::get('/edit', [ProfileController::class, 'getProfileEdit'])
+                ->name('get.edit');
+   
+        Route::post('/edit', [ProfileController::class, 'postProfileEdit'])
+                ->name('post.edit');
+});
 
 // friends routes
-Route::get('/friends', [FriendsController::class, 'getIndex']);
-Route::get('/friends/add/{username}', [FriendsController::class, 'getAdd']);
-Route::get('/friends/accept/{username}', [FriendsController::class, 'getAccept']);
-Route::get('/friends/remove/{username}', [FriendsController::class, 'getRemoveFriend']);
+Route::prefix('/friends')->name('friends.')->group(function() {
+        Route::get('/', [FriendsController::class, 'getIndex'])
+                ->name('index');
+        
+        Route::get('/add/{username}', [FriendsController::class, 'getAdd'])
+                ->name('add');
+        
+        Route::get('/accept/{username}', [FriendsController::class, 'getAccept'])
+                ->name('accept');
+
+        Route::get('/remove/{username}', [FriendsController::class, 'getRemoveFriend'])
+                ->name('remove');
+});
 
 // status routes
-Route::post('/status', [StatusController::class, 'postStatus']);
-Route::post('/status/{statusID}/reply', [StatusController::class, 'postReply']);
-Route::get('/status/{statusID}/like', [StatusController::class, 'getLike']);
+Route::prefix('/status')->name('status.')->group(function() {
+        Route::post('/', [StatusController::class, 'postStatus'])
+                ->name('index');
+        
+        Route::post('/{statusID}/reply', [StatusController::class, 'postReply'])
+                ->name('reply');
+        
+        Route::get('/{statusID}/like', [StatusController::class, 'getLike'])
+                ->name('like');
 
-// testing routes
-#Route::get('/alert', function() {
-#    return redirect('/')->with('info', 'You have sign up!');
-#});
+});

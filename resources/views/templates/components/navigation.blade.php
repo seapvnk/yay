@@ -31,7 +31,7 @@
         @endif
       </ul>
       @if (Auth::check())
-        <form action="search" method="GET" class="form-inline my-2 my-lg-0" >
+        <form action="/search" method="GET" class="form-inline my-2 my-lg-0" >
           @csrf
           <input class="form-control mr-sm-2" name="query" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search <i class="icofont-search"></i></button>

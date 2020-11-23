@@ -36,15 +36,10 @@
         <hr>
 
         @if (!$statuses->count())
-            <div class="d-flex flex-column align-items-center justify-content-center">
-                <div class="empty-icon">
-                    <i style="font-size: 16vh" class="icofont-users"></i>
-                </div>
-                <p class="empty-title h5">Nothing to see :p</p>
-                <p class="empty-subtitle">
-                    There's nothing in your timeline, yet.
-                </p>
-            </div>
+            @include('templates.components.empty', [
+                'title' => 'Nothing to see :p',
+                'message' => "There's nothing in your timeline, yet."
+            ])
         @else
             @foreach ($statuses as $status)
                 @include('timeline.components.status')

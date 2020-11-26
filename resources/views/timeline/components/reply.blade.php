@@ -1,61 +1,34 @@
-<style>
-  .reply-tile {
-    display: flex;
-    align-items: flex-start;
-    padding: .8rem;
-    margin: 1rem 0;
-    
-  }
-
-  .reply-tile .reply-tile-subtitle {
-    margin: 0;
-  }
-
-  .reply-tile .reply-tile-title {
-    margin: 0;
-    font-size: 1rem;
-  }
-
-  .reply-tile figure {
-      margin-right: 10px;
-  }
-</style>
-
-<div class="reply-tile">
-  <div class="reply-tile-icon">
-    <a href="/user/{{ $reply->user->username }}">
-      <figure 
-        class="avatar avatar-lg" 
-        data-initial="{{ strtoupper($reply->user->username[0]) }}" 
-        style="background-color: #0004;"
+<div class="card m-4">
+  <div class="card-header">
+      <a href="/user/{{ $reply->user->username }}">
+          <img 
+            src="{{ $reply->user->getAvatarURL() }}" 
+            alt=""
+            class="rounded-circle bg-primary"
+            style="width: 50px"
+          >
+      </a>
+      
+      <a 
+          href="/user/{{ $reply->user->username }}" 
+          class="text-info mr-1"
       >
-        <img 
-          src="{{ $reply->user->getAvatarURL() }}" 
-          alt=""
-        >
-      </figure>
-    </a>
+          {{ "@" . $reply->user->username }}
+      </a>
+      -
+      <span class="ml-1"> {{ $reply->created_at->diffForHumans() }} </span>
   </div>
-  <div class="reply-tile-content">
-    <a 
-        href="/user/{{ $reply->user->username }}" 
-        class="reply-tile-title text-primary"
-    >
-        {{ "@" . $reply->user->username }}
-    </a>
-    <br>
-    <span 
-        class="text-gray"
-    >
-        {{ $reply->created_at->diffForHumans() }}
-    </span>
-    <br>
-    <a href="/status/{{ $reply->id }}/like" class="text-primary">Like <i class="icofont-thumbs-up"></i></a>
-    <span class="text-gray">{{ $reply->likes->count() }} {{Str::plural('like', $reply->likes->count() )}}</span>
+
+  <div class="card-body">
+    
     <div class="reply">
         {{ $reply->body }}
     </div>
+    
+    <a href="/status/{{ $reply->id }}/like" class="text-info">Like <i class="icofont-thumbs-up"></i></a>
+    <span class="text-gray">{{ $reply->likes->count() }} {{Str::plural('like', $reply->likes->count() )}}</span>
+  
   </div>
 </div>
 
-<div class="divider"></div>
+<hr>

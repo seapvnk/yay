@@ -18,11 +18,11 @@
     </div>
   </div>
   <div class="card-body">
-    <p>{{ $status->body }}</p>
     <div>
         <a href="/status/{{ $status->id }}/like" class="text-info">Like <i class="icofont-thumbs-up"></i></a>
         <span class="text-gray">{{ $status->likes->count() }} {{Str::plural('like', $status->likes->count() )}}</span>   
     </div>
+    <p style="font-size: 2rem">{{ $status->body }}</p>
   </div>
 
   <div class="container">

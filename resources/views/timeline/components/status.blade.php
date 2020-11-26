@@ -1,5 +1,4 @@
-<div class="status bg-gray">
-<div class="card row">
+<div class="card row mb-4">
   <div class="card-header  d-flex align-items-center">
     <div class="d-flex">
       <a href="/user/{{ $status->user->username }}">
@@ -28,8 +27,7 @@
 
   <div class="container">
     <hr>
-    <div class="reply">
-        <h4>reply!</h4>
+    <div class="container mb-3">
         <form action="/status/{{ $status->id}}/reply" method="post">
             @csrf
             <div class="form-group">

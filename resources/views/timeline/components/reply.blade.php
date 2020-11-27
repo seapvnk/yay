@@ -1,34 +1,38 @@
-<div class="card m-4">
-  <div class="card-header">
-      <a href="/user/{{ $reply->user->username }}">
-          <img 
-            src="{{ $reply->user->getAvatarURL() }}" 
-            alt=""
-            class="rounded-circle bg-primary"
-            style="width: 50px"
-          >
-      </a>
+
+
+<div class="d-flex">
+    <a href="/user/{{ $reply->user->username }}">
+        <img 
+          src="{{ $reply->user->getAvatarURL() }}" 
+          alt=""
+          class="rounded-circle bg-secondary mr-3"
+          style="width: 55px"
+        >
+    </a>
+    
+    <div>
+      <p>
+        <a 
+            href="/user/{{ $reply->user->username }}" 
+            class="text-info mr-1"
+        >
+            {{ "@" . $reply->user->username }}
+        </a>
+        -
+        <span class="ml-1"> {{ $reply->created_at->diffForHumans() }} </span>
       
-      <a 
-          href="/user/{{ $reply->user->username }}" 
-          class="text-info mr-1"
-      >
-          {{ "@" . $reply->user->username }}
-      </a>
-      -
-      <span class="ml-1"> {{ $reply->created_at->diffForHumans() }} </span>
-  </div>
+        <br>
+        <span>{{ $reply->body }}</span>
 
-  <div class="card-body">
-    
-    <div class="reply">
-        {{ $reply->body }}
+        <br>
+        <a href="/status/{{ $reply->id }}/like" class="text-info">
+          Like <i class="icofont-thumbs-up"></i>
+        </a>
+        
+        <span class="text-gray">
+          {{ $reply->likes->count() }} {{Str::plural('like', $reply->likes->count() )}}
+        </span>
+      </p>
+
     </div>
-    
-    <a href="/status/{{ $reply->id }}/like" class="text-info">Like <i class="icofont-thumbs-up"></i></a>
-    <span class="text-gray">{{ $reply->likes->count() }} {{Str::plural('like', $reply->likes->count() )}}</span>
-  
-  </div>
 </div>
-
-<hr>

@@ -53,7 +53,7 @@ class StatusController extends Controller
         $status = Status::find($statusID);
 
         
-        if (!$status || (Auth::user()->isFriendWith($status->user) && Auth::user() !== $status->user)) {
+        if (!$status) {
             return redirect('home');
         }
 

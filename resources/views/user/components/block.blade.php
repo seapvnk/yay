@@ -1,41 +1,32 @@
-<style>
-  .tile {
-    align-items: center;
-    padding: .6rem;
-    margin: 1rem 0;
-  }
+<div class="card mb-2">
+  <div class="card-header">
+    <div class="float-left">
+      <a href="/user/{{ $user->username }}">
+          <img 
+            src="{{ $user->getAvatarURL() }}" 
+            alt=""
+            class="bg-primary rounded-circle"
+            width="55px"
+          >
+      </a>
+      
+      <a style="font-size: 2rem" href="/user/{{ $user->username }}" class="text-info">{{ "@" . $user->username }}</a> <br>
+    </div>
 
-  .tile .tile-subtitle {
-    margin: 0;
-  }
+    <div class="float-right">
+      @include('user.components.friendship')
+    </div>
+    
+    <div class="clearfix"></div>
+  </div>
 
-  .tile .tile-title {
-    font-size: 1.1rem;
-    margin: 0;
-  }
-</style>
+  <div class="card-body">
+    <div>
+    
+      <a href="/user/{{ $user->username }}" class="text-secondary">{{ $user->getFullName() }}</a> <br>
+      <a class="text-secondary" href="">{{ $user->location?? '' }}</a>
+ 
+    </div>
+  </div>
 
-<div class="tile bg-gray">
-  <div class="tile-icon">
-    <a href="/user/{{ $user->username }}">
-      <figure 
-        class="avatar avatar-xl" 
-        data-initial="{{ strtoupper($user->username[0]) }}" 
-        style="background-color: #0004;"
-      >
-        <img 
-          src="{{ $user->getAvatarURL() }}" 
-          alt=""
-        >
-      </figure>
-    </a>
-  </div>
-  <div class="tile-content">
-    <a href="/user/{{ $user->username }}" class="tile-title text-primary">{{ "@" . $user->username }}</a>
-    <p class="tile-subtitle text-gray" href="/user/{{ $user->username }}" class="tile-title text-primary">{{ $user->getFullName() }}</p>
-    <p class="tile-subtitle text-gray">{{ $user->location?? '' }}</p>
-  </div>
-  <div>
-    <a href="/friends/add/{{ $user->username }}" class="btn btn-lg">add friend</a>
-  </div>
 </div>

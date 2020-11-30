@@ -8,7 +8,6 @@
 
 @elseif (Auth::user()->isFriendWith($user))
 
-    <span>You and {{ $user->getNameOrUsername() }} are friends.</span>
     <a href="/friends/remove/{{ $user->username }}" class="btn btn-danger">remove friend</a>
 
 @else

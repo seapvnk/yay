@@ -17,8 +17,8 @@ Yay is built mainly with Laravel framework for backend and templates generation 
 - JS
 
 ## Roadmap
-- [ ] Refactor views
+- [x] Refactor views
 - [ ] Add profile picture feature
 - [ ] Add profile cover feature
-- [ ] Redesign interface to a better one
+- [x] Redesign interface to a better one
 - [ ] Ajax requests for add friends and like statuses

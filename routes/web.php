@@ -50,7 +50,7 @@ Route::get('/search', [SearchController::class, 'getResults'])
 
 // user route
 Route::get('/user/{username}', [ProfileController::class, 'getProfile'])
-        ->name('profile');
+        ->name('user');
 
 // profile routes
 Route::prefix('/profile')->name('profile.')->group(function() {

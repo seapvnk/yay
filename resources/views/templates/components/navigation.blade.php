@@ -31,17 +31,36 @@
         @endif
       </ul>
       @if (Auth::check())
-        <form action="/search" method="GET" class="form-inline my-2 my-lg-0" >
+        <form action="{{ route('search') }}" method="GET" class="form-inline my-2 my-lg-0" >
           @csrf
-          <input class="form-control mr-sm-2" name="query" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search <i class="icofont-search"></i></button>
+          <input 
+            class="form-control mr-sm-2" 
+            name="query" 
+            type="search" 
+            placeholder="Search" 
+            aria-label="Search"
+          >
+          <button 
+            class="btn btn-outline-primary my-2 my-sm-0" 
+            type="submit"
+          >
+            Search <i class="icofont-search"></i>
+          </button>
         </form>
+
         <a 
-          href="/user/{{ Auth::user()->username }}" 
-          class="btn btn-link text-light text-bold btn-lg">
-          <img class="rounded-circle" style="background-color: #0004; width: 38px" src="{{ Auth::user()->getAvatarURL() }}" alt="">
+          href="{{ route('user', ['username' => Auth::user()->username]) }}" 
+          class="btn btn-link text-light text-bold btn-lg"
+        >
+          <img 
+            class="rounded-circle" 
+            style="background-color: #0004; width: 38px" 
+            src="{{ Auth::user()->getAvatarURL() }}" 
+            alt=""
+          >
         </a>
-        <a href="/signout" class="text-danger">Sign out</a>
+
+        <a href="{{ route('signout') }}" class="text-danger">Sign out</a>
       @endif
     </div>
   </nav>

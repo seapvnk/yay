@@ -12,11 +12,8 @@ class ProfileController extends Controller
 {
     public function getProfile($username)
     {
-        $user = User::where('username', $username)->first();
 
-        if (!$user) {
-            abort(404);
-        }
+        $user = User::where('username', $username)->firstOrFail();
 
         $statuses = Status::notReply()->where(function ($query) use ($user) {
             return $query->where('user_id', $user->id);
@@ -24,9 +21,10 @@ class ProfileController extends Controller
         ->orderBy('created_at', 'desc')
         ->paginate(10);
         
-        return view('profile.index')
-            ->with('user', $user)
-            ->with('statuses', $statuses);
+        return view('profile.index', [
+            'user' => $user,
+            'statuses' => $statuses
+        ]);
     }
 
     public function getProfileEdit()
@@ -36,19 +34,16 @@ class ProfileController extends Controller
 
     public function postProfileEdit(Request $request)
     {
-        $this->validate($request, [
+        $request->validate([
             'first_name' => 'alpha|max:50',
             'last_name' => 'alpha|max:50',
             'location' => 'max:50',
         ]);
 
-        Auth::user()->update([
-            'first_name' => $request->input('first_name'),
-            'last_name' => $request->input('last_name'),
-            'location' => $request->input('location'),
-            'avatar_seed' => $request->input('avatar_seed')?? md5(Auth::user()->email),
-        ]);
+        Auth::user()->fill($request->all());
+        Auth::user()->update();
 
-        return redirect('/profile/edit')->withInfo('Your profile has been updated.');
+        session()->flash('info', 'Your profile has been updated.');
+        return redirect()->route('profile.get.edit');
     }
 }

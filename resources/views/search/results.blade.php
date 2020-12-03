@@ -3,15 +3,6 @@
 
 @section('content')
 
-    <style>
-        .results-container {
-            margin: 0 auto;
-            width: 60%;
-        }
-        @media screen and (max-width: 756px) {
-            .results-container { width: 100% }
-        }
-    </style>
     <div class="container" style="padding: 2rem">
         <h3>Results for "<span class="text-primary">{{ Request::input('query') }}</span>"</h3>
 

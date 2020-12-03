@@ -20,28 +20,37 @@ use App\Http\Controllers\StatusController;
 */
 
 // home routes
-Route::get('/', [HomeController::class, 'index']);
-Route::get('/home', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // sign up routes
 Route::get('/signup', [AuthController::class, 'getSignup'])
+        ->name('signup.get')
         ->middleware('guest');
+
 Route::post('/signup', [AuthController::class, 'postSignup'])
+        ->name('signup.post')
         ->middleware('guest');
+
 // sign in routes
 Route::get('/signin', [AuthController::class, 'getSignin'])
+        ->name('signin.get')
         ->middleware('guest');
+
 Route::post('/signin', [AuthController::class, 'postSignin'])
+        ->name('signin.post')
         ->middleware('guest');
 
 // sign out route
-Route::get('/signout', [AuthController::class, 'signOut']);
+Route::get('/signout', [AuthController::class, 'signOut'])
+        ->name('signout');
 
 // search route
-Route::get('/search', [SearchController::class, 'getResults']);
+Route::get('/search', [SearchController::class, 'getResults'])
+        ->name('search');
 
 // user route
-Route::get('/user/{username}', [ProfileController::class, 'getProfile']);
+Route::get('/user/{username}', [ProfileController::class, 'getProfile'])
+        ->name('profile');
 
 // profile routes
 Route::prefix('/profile')->name('profile.')->group(function() {

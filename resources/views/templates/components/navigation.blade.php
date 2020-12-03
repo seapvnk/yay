@@ -9,24 +9,24 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li>
-          <a class="navbar-brand" href="/">yay!</a>
+          <a class="navbar-brand" href="{{ route('home') }}">yay!</a>
         </li>
         @if (Auth::check())
           <li class="nav-item">
-            <a class="nav-link" href="/home">Timeline</a>
+            <a class="nav-link" href="{{ route('home') }}">Timeline</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/friends">Friends</a>
+            <a class="nav-link" href="{{ route('friends.index') }}">Friends</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/profile/edit">Edit profile</a>
+            <a class="nav-link" href="{{ route('profile.get.edit') }}">Edit profile</a>
           </li>
         @else
           <li class="nav-item">
-            <a class="nav-link" href="/signup">Sign up</a>
+            <a class="nav-link" href="{{ route('signup.get') }}">Sign up</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/signin">Sign in</a>
+            <a class="nav-link" href="{{ route('signin.get') }}">Sign in</a>
           </li>
         @endif
       </ul>

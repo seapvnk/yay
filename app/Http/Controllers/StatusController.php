@@ -12,52 +12,56 @@ class StatusController extends Controller
 {
     public function postStatus(Request $request)
     {
-        $this->validate($request, [
-            'status' => 'required|max:1000',
-        ]);
+        $request->validate(['status' => 'required|max:1000']);
 
         Auth::user()->statuses()->create([
             'body' => $request->input('status')
         ]);
 
-        return redirect('home');
+        return redirect()->route('home');
     }
 
     public function postReply(Request $request, $statusID)
     {
+
         $this->validate($request, [
             "reply-$statusID" => 'required|max:1000',
-        ],[
-            'required' => 'the reply body is required'
+        ], [
+            'required' => 'The reply body is required!'
         ]);
 
         $status = Status::notReply()->find($statusID);
+
         if (!$status) {
-            return redirect('home');
+            session()->flash('info', "This status no longer exists!");
+            return redirect()->back();
         }
 
         if (!Auth::user()->isFriendWith($status->user)) {
-            return redirect('home');
+            session()->flash('info', "You can only reply your friends!");
+            return redirect()->back();
         }
 
-        $reply = new Status(["body" => $request->input("reply-$statusID")]);
-        $reply->user()->associate(Auth::user());
+        $reply = new Status();
+        $reply->body = $request->input("reply-$statusID");
 
+        $reply->user()->associate(Auth::user());
         $status->replies()->save($reply);
         
-        return redirect('home');
+        return redirect()->back();
     }
 
     public function getLike($statusID)
     {
         $status = Status::find($statusID);
 
-        
         if (!$status) {
+            session()->flash('info', "This status no longer exists!");
             return redirect('home');
         }
 
         if (Auth::user()->hasLikedStatus($status)) {
+            session()->flash('info', "You already liked it!");
             return redirect()->back();
         }
 

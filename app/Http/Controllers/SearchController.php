@@ -15,6 +15,7 @@ class SearchController extends Controller
         if (!$query) {
             return redirect('home');
         }
+        
         $fullNameRawSQLQuery = DB::raw("CONCAT(first_name, ' ' , last_name)");
         $users = User::where($fullNameRawSQLQuery, 'LIKE', "%{$query}%")
                     ->orWhere('username', 'LIKE', "%{$query}%")

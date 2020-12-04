@@ -33,12 +33,12 @@ class StatusController extends Controller
         $status = Status::notReply()->find($statusID);
 
         if (!$status) {
-            session()->flash('info', "This status no longer exists!");
+            session()->flash('error-alert', "This status no longer exists!");
             return redirect()->back();
         }
 
         if (!Auth::user()->isFriendWith($status->user)) {
-            session()->flash('info', "You can only reply your friends!");
+            session()->flash('error-alert', "You can only reply your friends!");
             return redirect()->back();
         }
 
@@ -56,12 +56,12 @@ class StatusController extends Controller
         $status = Status::find($statusID);
 
         if (!$status) {
-            session()->flash('info', "This status no longer exists!");
+            session()->flash('error-alert', "This status no longer exists!");
             return redirect('home');
         }
 
         if (Auth::user()->hasLikedStatus($status)) {
-            session()->flash('info', "You already liked it!");
+            session()->flash('error-alert', "You already liked it!");
             return redirect()->back();
         }
 

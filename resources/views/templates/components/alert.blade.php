@@ -20,13 +20,36 @@
         </div>
 
     </div>
-
-    <script>
-        $('.toast').toast({
-            delay: 4000,
-            animation: true,
-        })
-        $('.toast').toast('show')
-    </script>
-
 @endif
+
+@if (Session::has('error-alert'))
+
+    <div 
+        class="toast bg-danger" 
+        style="position: absolute; width: 320px; left: 2%; top: 10%" 
+        role="alert" 
+        aria-live="assertive" 
+        aria-atomic="true"
+    >
+        <div class="toast-header bg-danger text-white">
+            <i class="icofont-bell"></i>
+            <strong class="mr-auto">Yay!</strong>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div class="toast-body text-white">
+            {{ Session::get('error-alert') }}
+        </div>
+
+    </div>
+@endif
+
+<script>
+    $('.toast').toast({
+        delay: 4000,
+        animation: true,
+    })
+    $('.toast').toast('show')
+</script>

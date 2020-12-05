@@ -1,5 +1,5 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-primary bg-primary">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon d-inline-flex justify-content-center align-items-center">
         <i class="text-light icofont-navigation-menu"></i>
@@ -41,7 +41,7 @@
             aria-label="Search"
           >
           <button 
-            class="btn btn-outline-primary my-2 my-sm-0" 
+            class="btn btn-light my-2 my-sm-0" 
             type="submit"
           >
             Search <i class="icofont-search"></i>
@@ -60,7 +60,7 @@
           >
         </a>
 
-        <a href="{{ route('signout') }}" class="text-danger">Sign out</a>
+        <a href="{{ route('signout') }}" class="text-light">Sign out</a>
       @endif
     </div>
   </nav>

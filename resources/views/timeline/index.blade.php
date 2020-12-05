@@ -26,7 +26,7 @@
 
             <button
                 role="submit" 
-                class="btn float-right btn-info {{ $errors->has('status')? 'btn-danger' : '' }}"
+                class="btn float-right btn-outline-primary {{ $errors->has('status')? 'btn-danger' : '' }}"
             >
                 Update status
             </button>

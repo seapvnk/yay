@@ -1,19 +1,17 @@
-<form action="/status/{{ $status->id}}/reply" method="post" class="form row">
+<form action="{{ route('status.reply', ['statusID' => $status->id]) }}" method="post" class="form row">
     @csrf
     <div class="col col-11">
         <div class="form-group">
-            <textarea
-                class=" bg-primary 
+            <input
+                class="
                         {{ $errors->has("reply-{$status->id}")? 'border-danger' : 'border-secodary' }}
-                        text-light
                         form-control 
                         {{ $errors->has("reply-{$status->id}")? 'is-invalid' : '' }}" 
                 
-                style="resize: none; padding: .2rem 1rem; font-size:18px" 
                 name="reply-{{ $status->id }}" 
-                id="status" 
+                id="status-{{ $status->id }}" 
                 rows="1"
-                placeholder="write a comment..."></textarea>
+                placeholder="leave a comment">
         </div>
         <input type="hidden" name="_token" value="{{ Session::token() }}">
         
@@ -29,7 +27,7 @@
     <div class="col-1">
         <button
             role="submit" 
-            class="btn {{ $errors->has("reply-{$status->id}")? 'btn-danger' : '' }}"
+            class="btn {{ $errors->has("reply-{$status->id}")? 'btn-danger' : 'btn-outline-primary' }}"
         >
             Reply
         </button>

@@ -1,5 +1,7 @@
 <div class="card mb-2">
+
   <div class="card-header">
+
     <div class="float-left">
       <a href="/user/{{ $user->username }}">
           <img 
@@ -10,7 +12,10 @@
           >
       </a>
       
-      <a style="font-size: 2rem" href="/user/{{ $user->username }}" class="text-info">{{ "@" . $user->username }}</a> <br>
+      <a style="font-size: 2rem" href="/user/{{ $user->username }}" class="text-info">
+        {{ "@" . $user->username }}
+      </a>
+      <br>
     </div>
 
     <div class="float-right">
@@ -18,15 +23,17 @@
     </div>
     
     <div class="clearfix"></div>
+
   </div>
 
   <div class="card-body">
-    <div>
     
-      <a href="/user/{{ $user->username }}" class="text-secondary">{{ $user->getFullName() }}</a> <br>
+    <div>
+      <a href="/user/{{ $user->username }}" class="text-secondary">{{ $user->getFullName() }}</a>
+      <br>
       <a class="text-secondary" href="">{{ $user->location?? '' }}</a>
- 
     </div>
+    
   </div>
 
 </div>

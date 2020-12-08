@@ -3,9 +3,11 @@
 @section('content')
     
     <div class="container">
+
         <form action="/status" method="post">
 
             <div class="form-group mt-4">
+
                 <textarea 
                     class="form-control {{ $errors->has('status') ? 'is-invalid' : '' }}" 
                     style="resize: none" 
@@ -13,9 +15,11 @@
                     id="status" 
                     placeholder="What's up {{ Auth::user()->getNameOrUsername() }}" 
                     rows="3"></textarea>
+
             </div>
 
             <input type="hidden" name="_token" value="{{ Session::token() }}">
+            
             @if ($errors->has('status'))
                 <div>
                     <span class="text-danger">
@@ -30,9 +34,10 @@
             >
                 Update status
             </button>
-        </form>
-        <div class="clearfix"></div>
 
+        </form>
+
+        <div class="clearfix"></div>
         <hr>
 
         @if (!$statuses->count())
@@ -49,4 +54,5 @@
         {{ $statuses->render() }}
 
     </div>
+    
 @stop

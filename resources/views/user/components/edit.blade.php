@@ -6,15 +6,15 @@
     <div class="d-flex flex-md-row flex-column">
         <div style="width: 100%" class="p-4 row d-flex flex-column align-items-center">
             <img 
-                src="{{ Auth::user()->getProfileAvatarURL(250) }}"
+                src="{{ asset(Auth::user()->getAvatarURL()) }}"
                 id="avatar"
                 alt=""
                 class="bg-secondary rounded-circle"
-                style="width: 250px; margin: 0 auto;"
+                style="width: 250px; height: 250px; margin: 0 auto; object-fit: cover"
             >
         </div>
 
-        <form style="width: 100%" class="form p-4" method="post" action="/profile/edit" name="edit">
+        <form style="width: 100%" class="form p-4" method="post" action="/profile/edit" name="edit" enctype="multipart/form-data">
             @csrf
             
             <div class="form-group">
@@ -77,20 +77,40 @@
                 @endif
             </div>
 
-            <input type="hidden" name="avatar_seed" value="{{ Auth::user()->avatar_seed }}">
+            
+            <input type="file" style="display: none" name="avatar" id="inputavatar">
+
             <button class="btn float-right btn-lg btn-success float-right">save</button>
             <div class="clearfix"></div>
+
         </form>
     </div>
 </div>
 
+@foreach($errors->all() as $error)
+
+    <p>{{$error}}</p>
+
+@endforeach
+
 <script>
-    const avatar = document.querySelector('#avatar');
+
+const input = document.querySelector('#inputavatar')
+    const avatar = document.querySelector('#avatar')
+
     avatar.addEventListener('click', () => {
-        const seed  = Date.now();
-        avatar.src = `https://avatars.dicebear.com/api/human/${seed}.svg`
-        document.edit.avatar_seed.value = seed;
+        input.click()
     })
+    
+    const loadFile = function(event) {
+        avatar.src = URL.createObjectURL(event.target.files[0])
+        
+        input.onload = function() {
+            URL.revokeObjectURL(input.src)
+        }
+    }
+    input.addEventListener('change', loadFile)
+
 </script>
 
 @stop

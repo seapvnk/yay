@@ -38,9 +38,15 @@ class ProfileController extends Controller
             'first_name' => 'alpha|max:50',
             'last_name' => 'alpha|max:50',
             'location' => 'max:50',
+            'avatar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         Auth::user()->fill($request->all());
+        
+        $avatarName = time(). '.' .request()->avatar->getClientOriginalExtension();
+        $request->avatar->storeAs('avatar', $avatarName);
+
+        Auth::user()->avatar = $avatarName;
         Auth::user()->update();
 
         session()->flash('info', 'Your profile has been updated.');

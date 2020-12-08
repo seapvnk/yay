@@ -5,10 +5,12 @@
 <div class="bg-primary">
     <div class="container p-4 d-flex flex-column align-items-center justify-content-center">
         <img 
-            src="{{ $user->getProfileAvatarURL(250) }}" 
+            src="{{ asset($user->getAvatarURL()) }}" 
             alt=""
             class="rounded-circle bg-dark"
             width="200px"
+            height="200px"
+            style="object-fit: cover"
         >
 
         <h1 class="text-light">{{ "@" . $user->username }}</h1>

@@ -54,9 +54,12 @@ class User extends Authenticatable
 
     public function getAvatarURL()
     {
-        $seed = $this->avatar_seed;
+        if ($this->avatar !== 'user.jpg') {
+            return 'storage/avatar/' . $this->avatar;
+        }
 
-        return "https://avatars.dicebear.com/api/human/$seed.svg";
+        $name = implode("%20", explode(" ", $this->getNameOrUsername()));
+        return "https://avatars.dicebear.com/api/initials/{$name}.svg";
     }
 
     public function statuses()

@@ -5,7 +5,7 @@
     <div class="float-left">
       <a href="/user/{{ $user->username }}">
           <img 
-            src="{{ $user->getAvatarURL() }}" 
+            src="{{ asset($user->getAvatarURL()) }}" 
             alt=""
             class="bg-primary rounded-circle"
             width="55px"

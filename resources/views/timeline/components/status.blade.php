@@ -7,7 +7,7 @@
           <img
             class="rounded-circle bg-primary"
             style="width: 75px"
-            src="{{ $status->user->getAvatarURL() }}" 
+            src="{{ asset($status->user->getAvatarURL()) }}" 
             alt=""
           >
       </a>

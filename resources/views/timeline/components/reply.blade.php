@@ -2,7 +2,7 @@
 
     <a href="/user/{{ $reply->user->username }}">
         <img 
-          src="{{ $reply->user->getAvatarURL() }}" 
+          src="{{ asset($reply->user->getAvatarURL()) }}" 
           alt=""
           class="rounded-circle bg-secondary mr-3"
           style="width: 55px"

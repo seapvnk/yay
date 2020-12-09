@@ -51,7 +51,7 @@
             @endforeach
         @endif
 
-        {{ $statuses->render() }}
+        {{ $statuses->links() }}
 
     </div>
     

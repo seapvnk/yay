@@ -55,7 +55,7 @@
           <img 
             class="rounded-circle" 
             style="background-color: #0004; width: 38px" 
-            src="{{ Auth::user()->getAvatarURL() }}" 
+            src="{{ asset(Auth::user()->getAvatarURL()) }}" 
             alt=""
           >
         </a>

@@ -27,7 +27,9 @@ class AuthController extends Controller
             'password' => bcrypt($request->input('password')),
         ]);
 
-        return redirect('home')->withInfo('Your account has been created and you can now sign in!');
+        session()->flash('info', 'Your account has been created and you can now sign in!');
+
+        return redirect()->route('home');
     }
 
     public function getSignin()
@@ -45,13 +47,13 @@ class AuthController extends Controller
         if (!Auth::attempt($request->only(['email', 'password']), $request->has('remember'))) {
             return redirect()->back()->withInfo('Invalid email or password');
         } else {
-            return redirect('home');
+            return redirect()->route('home');
         }
     }
 
     public function signOut()
     {
         Auth::logout();
-        return redirect('home');
+        return redirect()->route('home');
     }
 }

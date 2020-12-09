@@ -57,7 +57,7 @@ class StatusController extends Controller
 
         if (!$status) {
             session()->flash('error-alert', "This status no longer exists!");
-            return redirect('home');
+            return redirect()->route('home');
         }
 
         if (Auth::user()->hasLikedStatus($status)) {

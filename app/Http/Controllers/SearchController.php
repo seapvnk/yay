@@ -13,7 +13,7 @@ class SearchController extends Controller
         $query = $request->input('query');
 
         if (!$query) {
-            return redirect('home');
+            return redirect()->route('home');
         }
         
         $fullNameRawSQLQuery = DB::raw("CONCAT(first_name, ' ' , last_name)");

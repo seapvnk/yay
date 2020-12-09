@@ -42,11 +42,14 @@ class ProfileController extends Controller
         ]);
 
         Auth::user()->fill($request->all());
-        
-        $avatarName = time(). '.' .request()->avatar->getClientOriginalExtension();
-        $request->avatar->storeAs('avatar', $avatarName);
 
-        Auth::user()->avatar = $avatarName;
+        if ($request->avatar) {
+            $avatarName = time(). '.' .request()->avatar->getClientOriginalExtension();
+            $request->avatar->storeAs('avatar', $avatarName);
+    
+            Auth::user()->avatar = $avatarName;
+        }
+        
         Auth::user()->update();
 
         session()->flash('info', 'Your profile has been updated.');

@@ -1,5 +1,5 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon d-inline-flex justify-content-center align-items-center">
         <i class="text-light icofont-navigation-menu"></i>
@@ -65,3 +65,6 @@
     </div>
   </nav>
 </header>
+
+<div class="p-4"></div>
+<div class="p-4"></div>

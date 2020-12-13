@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="bg-primary">
+<div class="bg-primary" style="margin-top: -2rem">
     <div class="container p-4 d-flex flex-column align-items-center justify-content-center">
         <img 
             src="{{ asset($user->getAvatarURL()) }}" 

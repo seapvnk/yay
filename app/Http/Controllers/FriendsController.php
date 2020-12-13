@@ -48,17 +48,20 @@ class FriendsController extends Controller
         }
 
         $user = User::where('username', $username)->first();
+
         if (!$user) {
-            return redirect('home')->withInfo('That user could not be found');
+            session()->flash('info', 'That user could not be found');
+            return redirect()->route('home');
         }
 
         if (!Auth::user()->hasFriendRequestReceived($user)) {
-            return redirect('home');
+            return redirect('home')->route('home');
         }
 
         Auth::user()->acceptFriendRequest($user);
-        $userProfile = "user/" . Auth::user()->username;
-        return redirect($userProfile)->withInfo($userProfile);
+        session()->flash('info', 'That user could not be found');
+        
+        return redirect()->route('user', ['username' => Auth::user()->username]);
     }
 
     public function getRemoveFriend($username)
@@ -66,7 +69,7 @@ class FriendsController extends Controller
         $user = User::where('username', $username)->first();
 
         if (!$user) {
-            return redirect('home');
+            return redirect()->route('home');
         }
 
         if (!Auth::user()->isFriendWith($user)) {
@@ -74,7 +77,9 @@ class FriendsController extends Controller
         }
 
         Auth::user()->deleteFriend($user);
-        return redirect()->back()->withInfo('Friend deleted.');
+        session()->flash('info', 'Friend deleted.');
+        
+        return redirect()->back();
         
     }
 }

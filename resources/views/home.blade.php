@@ -1,13 +1,7 @@
 @extends('templates.default')
 
 @section('content')
-    <img 
-        src="https://source.unsplash.com/1600x900/?social" 
-        style="height: 30vh; width: 100vw; object-fit: cover"
-        class="img-fluid" 
-    >
-    
-    <div class="jumbotron" style="height: 56vh">
+    <div class="jumbotron bg-light" style="height: 56vh">
         <h1 class="display-4">Welcome to Yay</h1>
         <p class="lead">Share experiences and thoughts with people that <br>
                         don't really know you and also don't care

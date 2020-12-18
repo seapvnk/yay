@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Status;
-
+use Illuminate\Support\Facades\File;
 
 class ProfileController extends Controller
 {
@@ -44,10 +44,16 @@ class ProfileController extends Controller
         Auth::user()->fill($request->all());
 
         if ($request->avatar) {
+            $oldProfilePic = Auth::user()->avatar;
             $avatarName = time(). '.' .request()->avatar->getClientOriginalExtension();
             $request->avatar->storeAs('avatar', $avatarName);
     
             Auth::user()->avatar = $avatarName;
+            
+            $path = storage_path() . '/app/public/avatar/'.$oldProfilePic;
+            if(File::exists($path)) {
+                unlink($path);
+            }
         }
         
         Auth::user()->update();

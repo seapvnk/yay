@@ -2,37 +2,31 @@
 
 @section('content')
 
-<div class="bg-primary" style="margin-top: -2rem">
-    <div class="container p-4 d-flex flex-column align-items-center justify-content-center">
-        <img 
-            src="{{ asset($user->getAvatarURL()) }}" 
-            alt=""
-            class="rounded-circle bg-dark"
-            width="200px"
-            height="200px"
-            style="object-fit: cover"
-        >
+<div class="p-3 bg-primary d-flex align-items-center justify-content-center" style="margin-top: -2rem">
 
-        <h1 class="text-light">{{ "@" . $user->username }}</h1>
-        
-        <div class="row">
+    <img 
+        src="{{ asset($user->getAvatarURL()) }}" 
+        alt=""
+        class="rounded-circle bg-dark ml-4"
+        width="250px"
+        height="250px"
+        style="object-fit: cover"
+    >
+
+    <div>
+        <div class="container p-4 d-flex flex-column align-items-center justify-content-center">
+            <h1 class="text-light display-3">{{ "@" . $user->username }}</h1>        
 
             @if ($user->getFullName() ||  $user->location)
-                <div class="col row">
-                    <span class="text-light">{{ $user->getFullName() ?? '' }}</span>
-                    <span class="text-muted">{{ $user->location ?? '' }}</span>
-                </div>
+                <p class="text-light p-0 mb-0" style="font-size: 22px">{{ $user->getFullName() ?? '' }}</p>
+                <p class="text-light" style="font-size: 22px">{{ $user->location ?? '' }}</p>
             @endif
 
-            <div class="col">
-                @include('user.components.friendship')
-            </div>
-
+            @include('user.components.friendship')
         </div>
-    
     </div>
-</div>
 
+</div>
 <div class="container mt-4">
         @if (!$statuses->count())
             @include('templates.components.empty', [

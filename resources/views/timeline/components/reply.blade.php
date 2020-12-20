@@ -22,7 +22,8 @@
         <span>{{ $reply->body }}</span>
         <br>
 
-        <a href="/status/{{ $reply->id }}/like" class="text-info">
+        <a href="/status/{{ $reply->id }}/like"
+          class="{{ Auth::user()->hasLikedStatus($reply) ? 'text-muted' : 'text-info' }}">
           Like <i class="icofont-thumbs-up"></i>
         </a>
         

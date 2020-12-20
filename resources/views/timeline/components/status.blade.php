@@ -24,7 +24,8 @@
 
   <div class="card-body">
 
-    <a href="/status/{{ $status->id }}/like" class="text-info">
+    <a href="/status/{{ $status->id }}/like" 
+      class="{{ Auth::user()->hasLikedStatus($status) ? 'text-muted' : 'text-info' }}">
       Like <i class="icofont-thumbs-up"></i>
     </a>
     <span class="text-gray">

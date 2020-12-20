@@ -139,6 +139,11 @@ class User extends Authenticatable
         return (bool) $status->likes->where('user_id', $this->id)->count();
     }
 
+    public function removeLikeInStatus(Status $status)
+    {
+        return $status->likes->where('user_id', $this->id)->first()->delete();
+    }
+
     public function likes()
     {
         return $this->hasMany(Like::class, 'user_id');

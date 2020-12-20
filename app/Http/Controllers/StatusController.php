@@ -61,7 +61,7 @@ class StatusController extends Controller
         }
 
         if (Auth::user()->hasLikedStatus($status)) {
-            session()->flash('error-alert', "You already liked it!");
+            Auth::user()->removeLikeInStatus($status);
             return redirect()->back();
         }
 

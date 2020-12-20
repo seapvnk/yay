@@ -27,7 +27,7 @@
     <div class="col-1">
         <button
             role="submit" 
-            class="btn {{ $errors->has("reply-{$status->id}")? 'btn-danger' : 'btn-outline-primary' }}"
+            class="btn {{ $errors->has("reply-{$status->id}")? 'btn-danger' : 'btn-outline-info' }}"
         >
             Reply
         </button>

@@ -14,7 +14,7 @@
     
     <title>yay!</title>
 </head>
-<body style="padding: 0; margin: 0">
+<body style="padding: 0; margin: 0" class="bg-dark">
     @include('templates.components.navigation')
 
     @include('templates.components.alert')

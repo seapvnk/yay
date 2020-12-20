@@ -37,7 +37,7 @@ class StatusController extends Controller
             return redirect()->back();
         }
 
-        if (!Auth::user()->isFriendWith($status->user)) {
+        if (!Auth::user()->isFriendWith($status->user) && Auth::user()->id !== $status->user->id) {
             session()->flash('error-alert', "You can only reply your friends!");
             return redirect()->back();
         }

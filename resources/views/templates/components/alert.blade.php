@@ -2,7 +2,7 @@
 
     <div 
         class="toast" 
-        style="position: absolute; width: 320px; left: 2%; top: 10%" 
+        style="position: absolute; width: 320px; left: 2%; top: 10%; z-index: 25 !important" 
         role="alert" 
         aria-live="assertive" 
         aria-atomic="true"
@@ -16,7 +16,7 @@
         </div>
 
         <div class="toast-body">
-            {{ Session::get('info') }}
+            {{ session('info') }}
         </div>
 
     </div>
@@ -40,16 +40,20 @@
         </div>
 
         <div class="toast-body text-white">
-            {{ Session::get('error-alert') }}
+            {{ session('error-alert') }}
         </div>
 
     </div>
 @endif
 
+
 <script>
+
+window.onload = function() {
     $('.toast').toast({
         delay: 4000,
         animation: true,
     })
     $('.toast').toast('show')
+}
 </script>

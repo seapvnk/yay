@@ -7,15 +7,14 @@
     <link rel="stylesheet" href="https://allyoucan.cloud/cdn/icofont/1.0.1/icofont.css">
     
     <!-- CSS -->
-    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
 
     <!-- JS -->
-    <script src="{{ mix('js/app.js') }}" defer></script>
+    <script src="{{ mix('/js/app.js') }}" defer></script>
     
     <title>yay!</title>
 </head>
 <body style="padding: 0; margin: 0">
-
     @include('templates.components.navigation')
 
     @include('templates.components.alert')

@@ -1,7 +1,7 @@
 @extends('templates.default')
 
 @section('content')
-    <div class="jumbotron bg-light" style="height: 56vh">
+    <div class="jumbotron bg-dark" style="height: 56vh">
         <h1 class="display-4">Welcome to Yay</h1>
         <p class="lead">Share experiences and thoughts with people that <br>
                         don't really know you and also don't care

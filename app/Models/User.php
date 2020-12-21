@@ -96,6 +96,11 @@ class User extends Authenticatable
         return $this->friendOf()->wherePivot('accepted', false)->get();
     }
 
+    public function removeFriendRequest(User $anotherUser)
+    {
+        $this->friendOf()->detach($anotherUser->id);
+    }
+
     public function hasFriendRequestPending(User $user)
     {
         return (bool) $this->friendRequestPending()->where('id', $user->id)->count();

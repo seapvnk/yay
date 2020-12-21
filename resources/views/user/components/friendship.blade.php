@@ -1,6 +1,6 @@
 @if (Auth::user()->hasFriendRequestPending($user))
 
-    <span class="btn btn-danger">Cancel friend request</span>
+    <a href="/friends/add/{{ $user->username }}"  class="btn btn-danger">Cancel friend request</a>
 
 @elseif (Auth::user()->hasFriendRequestReceived($user))
 

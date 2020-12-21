@@ -28,7 +28,10 @@ class FriendsController extends Controller
 
         if (Auth::user()->hasFriendRequestPending($user) || 
             $user->hasFriendRequestPending(Auth::user())) {
-            return redirect("user/{$user->username}")->withInfo('Friend request already pending.');
+            
+            Auth::user()->removeFriendRequest($user);
+            session()->flash('info', 'Friend request canceled');
+            return redirect()->back();
         }
 
         if (Auth::user()->isFriendWith($user)) {

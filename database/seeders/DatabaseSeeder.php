@@ -13,8 +13,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::factory(10)->has(
-            \App\Models\Status::factory(5)
+        $usersQuantity = (int) $this->command->anticipate('How many users?', [5, 10, 15]);
+        $statusPerUserQuantity = (int) $this->command->anticipate('How many comments per user?', [5, 10, 15]);
+        
+        if (!is_int($usersQuantity) || !is_int($statusPerUserQuantity)) {
+            $usersQuantity = 5;
+            $statusPerUserQuantity = 5;
+        }
+        
+        \App\Models\User::factory($usersQuantity)->has(
+            \App\Models\Status::factory($statusPerUserQuantity)
         )->create();
     }
 }

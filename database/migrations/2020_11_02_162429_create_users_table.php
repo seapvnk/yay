@@ -44,5 +44,13 @@ class CreateUsersTable extends Migration
     public function down()
     {
         Schema::dropIfExists('users');
+
+        $images = array_filter(scandir(public_path() . "/storage/avatar"), function ($image) {
+            return !in_array($image, ['.', '..']);
+        });
+        
+        foreach ($images as $image) {
+            unlink(public_path() . "/storage/avatar/" . $image);
+        }
     }
 }

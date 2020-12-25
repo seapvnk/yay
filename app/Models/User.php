@@ -29,6 +29,21 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function (User $user) {
+            $file = public_path() . "/avatar/{$user->avatar}";
+            
+            if (file_exists($file)) {
+                unlink($file);
+            }
+
+            $user->statuses()->delete();
+        });
+    }
+
     public function getFullName()
     {
         if ($this->first_name && $this->last_name) {

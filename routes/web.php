@@ -59,6 +59,9 @@ Route::prefix('/profile')->name('profile.')->group(function() {
    
         Route::post('/edit', [ProfileController::class, 'postProfileEdit'])
                 ->name('post.edit');
+                
+        Route::post('/delete', [ProfileController::class, 'postDeleteProfile'])
+                ->name('post.delete');
 });
 
 // friends routes

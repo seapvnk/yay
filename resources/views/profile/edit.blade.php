@@ -42,9 +42,13 @@
                 >
             </div>
         </div>
+        
+        
 
         <form style="width: 100%" class="form p-4" method="post" action="/profile/edit" name="edit" enctype="multipart/form-data">
             @csrf
+
+            <h2>Edit profile</h2>
             
             <div class="form-group">
                 <label 
@@ -112,6 +116,26 @@
             <button class="btn float-right btn-lg btn-success float-right">save</button>
             <div class="clearfix"></div>
 
+        </form>
+        
+        <form style="width: 100%" class="form p-4" method="post" action="/profile/delete" name="delete">
+                @csrf
+                
+                <h2>Delete account</h2>
+                <div class="form-group">
+                    <label class="form-label  {{$errors->has('password')? 'is-invalid' : ''}}" for="password">Password:</label>
+                    <input 
+                        class="form-control  {{$errors->has('password')? 'is-invalid' : ''}}" 
+                        type="password" 
+                        id="password" 
+                        name="password"
+                        placeholder="Enter your password"
+                    >
+                    @if ($errors->has('password'))
+                        <small class="text-danger">{{ $errors->first('password') }}</small>
+                    @endif
+                </div>
+            <button class="btn float-right btn-lg btn-danger float-right">delete profile</button>
         </form>
     </div>
 </div>

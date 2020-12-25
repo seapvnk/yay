@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Status;
@@ -32,11 +33,34 @@ class ProfileController extends Controller
         return view('profile.edit');
     }
 
+    public function postDeleteProfile(Request $request)
+    {
+        $request->validate([
+            'password' => 'required',
+        ]);
+        
+        if (Hash::check($request->password, Auth::user()->password)) {
+            
+            $user = Auth::user();
+            Auth::logout();
+            $user->delete();
+            
+            session()->flash('info', 'your account has been deleted!');
+            redirect()->route('home');
+
+        } else {
+
+            session()->flash('error-alert', 'invalid password!');
+            redirect()->back();
+        
+        }
+    }
+
     public function postProfileEdit(Request $request)
     {
         $request->validate([
-            'first_name' => 'alpha|max:50',
-            'last_name' => 'alpha|max:50',
+            'first_name' => 'max:50',
+            'last_name' => 'max:50',
             'location' => 'max:50',
             'avatar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);

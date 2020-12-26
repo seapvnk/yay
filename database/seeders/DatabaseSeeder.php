@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
         }
 
         $usersQuantity = (int) $this->command->anticipate('How many users?', [5, 10, 15]);
-        $statusPerUserQuantity = (int) $this->command->anticipate('How many comments per user?', [5, 10, 15]);
+        $statusPerUserQuantity = (int) $this->command->anticipate('How many statuses per user?', [5, 10, 15]);
 
         if (!is_int($usersQuantity) || !is_int($statusPerUserQuantity)) {
             $usersQuantity = 5;

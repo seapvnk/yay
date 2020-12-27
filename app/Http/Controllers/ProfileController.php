@@ -43,15 +43,16 @@ class ProfileController extends Controller
             
             $user = Auth::user();
             Auth::logout();
+            
             $user->delete();
             
             session()->flash('info', 'your account has been deleted!');
-            redirect()->route('home');
+            return redirect()->route('home');
 
         } else {
 
             session()->flash('error-alert', 'invalid password!');
-            redirect()->back();
+            return redirect()->back();
         
         }
     }

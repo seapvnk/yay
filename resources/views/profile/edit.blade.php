@@ -2,32 +2,6 @@
 
 @section('content')
 
-<style>
-
-.avatar-icon {
-    display: none;
-    transitio: 1s;
-}
-.avatar-container { 
-    position: relative;
-    transition: 1s;
-    border-radius: 50%;
-}
-
-.avatar-container:hover {
-    filter: grayscale();
-}
-.avatar-container:hover .avatar-icon {
-    display: block;
-    position: absolute;
-    font-size: 120px;
-    left: calc(50% - 60px);
-    top: calc(35% - 60px);
-    color: rgba(255, 255, 255, .9);
-}
-
-</style>
-
 <div class="container">
     <div class="d-flex flex-md-row flex-column">
         <div style="width: 100%" class="p-4 row d-flex flex-column align-items-center">
@@ -42,8 +16,6 @@
                 >
             </div>
         </div>
-        
-        
 
         <form style="width: 100%" class="form p-4" method="post" action="/profile/edit" name="edit" enctype="multipart/form-data">
             @csrf
@@ -135,35 +107,44 @@
                         <small class="text-danger">{{ $errors->first('password') }}</small>
                     @endif
                 </div>
-            <button class="btn float-right btn-lg btn-danger float-right">delete profile</button>
+
+                <div class="form-group">
+                    <label class="form-label  {{$errors->has('password_confirm')? 'is-invalid' : ''}}" for="password_confirm">Confirm your password:</label>
+                    <input 
+                        class="form-control  {{$errors->has('password_confirm')? 'is-invalid' : ''}}" 
+                        type="password" 
+                        id="password_confirm" 
+                        name="password_confirm"
+                        placeholder="Enter your password again"
+                    >
+                    @if ($errors->has('password_confirm'))
+                        <small class="text-danger">{{ $errors->first('password_confirm') }}</small>
+                    @endif
+                </div>
+                
+                <button class="btn float-right btn-lg btn-danger float-right">delete profile</button>
         </form>
     </div>
 </div>
 
-@foreach($errors->all() as $error)
-
-    <p>{{$error}}</p>
-
-@endforeach
-
 <script>
 
 const input = document.querySelector('#inputavatar')
-    const avatar = document.querySelector('#avatar')
-    const clickable = document.querySelector('.avatar-container')
+const avatar = document.querySelector('#avatar')
+const clickable = document.querySelector('.avatar-container')
 
-    clickable.addEventListener('click', () => {
-        input.click()
-    })
+clickable.addEventListener('click', () => {
+    input.click()
+})
+
+const loadFile = function(event) {
+    avatar.src = URL.createObjectURL(event.target.files[0])
     
-    const loadFile = function(event) {
-        avatar.src = URL.createObjectURL(event.target.files[0])
-        
-        input.onload = function() {
-            URL.revokeObjectURL(input.src)
-        }
+    input.onload = function() {
+        URL.revokeObjectURL(input.src)
     }
-    input.addEventListener('change', loadFile)
+}
+input.addEventListener('change', loadFile)
 
 </script>
 

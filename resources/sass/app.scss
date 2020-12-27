@@ -3,6 +3,17 @@
 
 // Variables
 @import 'variables';
+@import 'navigation';
+@import 'profile-edit';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+
+* {
+    border-radius: 0 !important;
+}
+
+input[name=query] {
+    height: 2.6rem !important;
+}

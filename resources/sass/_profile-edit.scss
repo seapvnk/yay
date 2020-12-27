@@ -1,0 +1,23 @@
+.avatar-icon {
+    display: none;
+    transition: 1s;
+}
+.avatar-container { 
+    position: relative;
+    transition: 1s;
+    border-radius: 50%;
+
+    &:hover {
+        filter: grayscale(100%);
+        
+        .avatar-icon {
+            display: block;
+            position: absolute;
+            font-size: 120px;
+            left: calc(50% - 60px);
+            top: calc(35% - 60px);
+            color: rgba(255, 255, 255, .9);
+        }
+    }
+
+}

@@ -37,7 +37,13 @@ class ProfileController extends Controller
     {
         $request->validate([
             'password' => 'required',
+            'password_confirm' => 'required',
         ]);
+
+        if ($request->password !== $request->password_confirm) {
+            session()->flash('error-alert', 'Passwords don\'t match!');
+            return redirect()->back();
+        }
         
         if (Hash::check($request->password, Auth::user()->password)) {
             

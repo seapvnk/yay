@@ -1,6 +1,12 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" 
+            type="button" data-toggle="collapse" 
+            data-target="#navbarTogglerDemo03" 
+            aria-controls="navbarTogglerDemo03" 
+            aria-expanded="false" 
+            aria-label="Toggle navigation"
+    >
       <span class="navbar-toggler-icon d-inline-flex justify-content-center align-items-center">
         <i class="text-light icofont-navigation-menu"></i>
         </span>
@@ -54,7 +60,6 @@
         >
           <img 
             class="rounded-circle" 
-            style="background-color: #0004; width: 38px" 
             src="{{ asset(Auth::user()->getAvatarURL()) }}" 
             alt=""
           >

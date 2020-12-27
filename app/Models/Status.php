@@ -17,6 +17,15 @@ class Status extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    public static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function (Status $status) {
+            $status->replies()->delete();
+        });
+    }
+
     public function scopeNotReply($query)
     {
         return $query->whereNull('parent_id');

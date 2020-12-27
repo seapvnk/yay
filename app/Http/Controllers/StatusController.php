@@ -21,6 +21,20 @@ class StatusController extends Controller
         return redirect()->route('home');
     }
 
+    public function postDelete(Request $request, $statusID)
+    {
+        $status = Status::findOrFail($statusID);
+
+        if (Auth::user()->id !== $status->user->id) {
+            session()->flash('error-alert', 'This status don\'t belongs to you!');
+            return redirect()->back();
+        } else {
+            $status->delete();
+            session()->flash('info', 'Status successfully deleted!');
+            return redirect()->back();
+        }
+    }
+
     public function postReply(Request $request, $statusID)
     {
 

@@ -1,6 +1,6 @@
 <div class="card row mb-4 bg-dark">
 
-  <div class="card-header d-flex align-items-center">
+  <div class="p-1 pl-4 pb-2 card-header d-flex align-items-center">
 
     <div class="d-flex">
       <a href="/user/{{ $status->user->username }}">
@@ -11,9 +11,19 @@
             alt=""
           >
       </a>
+
     </div>
 
     <div class="container">
+      
+      @if ($status->user->id == Auth::user()->id)
+        <div class="float-right">
+          <a href="/status/{{ $status->id }}/delete">x</a>
+        <div class="clearfix"></div>
+        
+        </div>
+      @endif
+
       <a href="/user/{{ $status->user->username }}" style="font-size: 1.4rem" class="mr-3 tile-title text-info">{{ "@" . $status->user->username }}</a>
       <br>
       <div class="mr-3">{{ $status->user->getFullName() }}</div>

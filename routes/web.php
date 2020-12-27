@@ -89,5 +89,8 @@ Route::prefix('/status')->name('status.')->group(function() {
         
         Route::get('/{statusID}/like', [StatusController::class, 'getLike'])
                 ->name('like');
+        
+        Route::get('/{statusID}/delete', [StatusController::class, 'postDelete'])
+                ->name('delete');
 
 });

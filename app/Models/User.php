@@ -67,6 +67,15 @@ class User extends Authenticatable
         }
     }
 
+    public function getCoverURL()
+    {
+        if ($this->avatar) {
+            return 'storage/cover/' . $this->cover;
+        }
+
+        return 'cover.png';        
+    }
+
     public function getAvatarURL()
     {
         if ($this->avatar !== 'user.jpg') {
@@ -169,9 +178,4 @@ class User extends Authenticatable
         return $this->hasMany(Like::class, 'user_id');
     }
 
-    // Remove this ~ just here to keep legacy
-    public function getProfileAvatarURL(int $size)
-    {
-        return $this->getAvatarURL();
-    }
 }

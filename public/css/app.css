@@ -15,9 +15,12 @@
 }
 
 .avatar-container {
+  margin-top: -7rem;
+  z-index: 3;
   position: relative;
   transition: 1s;
   border-radius: 50%;
+  background-color: transparent !important;
 }
 
 .avatar-container:hover {
@@ -31,6 +34,39 @@
   left: calc(50% - 60px);
   top: calc(35% - 60px);
   color: rgba(255, 255, 255, 0.9);
+}
+
+.avatar-icon {
+  margin-bottom: -4rem !important;
+}
+
+.bg-fit {
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-position: 50% 50% !important;
+}
+
+.bg-gradient {
+  background: #525252 !important;
+  /* fallback for old browsers */
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #3d72b4, #525252) !important;
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.cover {
+  height: 200px;
+  width: 100%;
+  z-index: 1;
+  transition: 1s;
+  background-color: #3a3f44;
+  border-top-left-radius: 5px !important;
+  border-top-right-radius: 5px !important;
+}
+
+.cover:hover {
+  background-color: #52575c;
+  filter: drop-shadow(50%);
 }
 
 /*!

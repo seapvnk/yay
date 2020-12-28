@@ -2,7 +2,10 @@
 
 @section('content')
 
-<div class="p-3 bg-primary d-flex align-items-center justify-content-center" style="margin-top: -2rem">
+<div 
+    class="p-4 bg-primary d-flex align-items-center flex-column-reverse flex-md-row justify-content-center bg-fit" 
+    style="margin-top: -3rem; background-image: url({{ asset($user->getCoverURL()) }}) !important;"
+>
 
     <img 
         src="{{ asset($user->getAvatarURL()) }}" 
@@ -13,7 +16,7 @@
         style="object-fit: cover"
     >
 
-    <div>
+    <div class="ml-4" style="background-color: {{ $user->cover? 'rgba(0, 0, 0, .4)' : 'transparent' }}">
         <div class="container p-4 d-flex flex-column align-items-center justify-content-center">
             <h1 class="text-light display-3">{{ "@" . $user->username }}</h1>        
 

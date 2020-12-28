@@ -12,7 +12,7 @@
           >
       </a>
       
-      <a style="font-size: 2rem" href="/user/{{ $user->username }}" class="text-info">
+      <a style="font-size: 1.5rem" href="/user/{{ $user->username }}" class="text-info">
         {{ "@" . $user->username }}
       </a>
       <br>

@@ -70,18 +70,33 @@ class ProfileController extends Controller
             'last_name' => 'max:50',
             'location' => 'max:50',
             'avatar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'cover' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         Auth::user()->fill($request->all());
 
         if ($request->avatar) {
             $oldProfilePic = Auth::user()->avatar;
-            $avatarName = time(). '.' .request()->avatar->getClientOriginalExtension();
+            $avatarName = time(). '.' .$request->avatar->getClientOriginalExtension();
             $request->avatar->storeAs('avatar', $avatarName);
     
             Auth::user()->avatar = $avatarName;
             
             $path = storage_path() . '/app/public/avatar/'.$oldProfilePic;
+            if(File::exists($path)) {
+                unlink($path);
+            }
+        }
+        
+        if ($request->cover) {
+
+            $oldCoverPic = Auth::user()->avatar;
+            $coverName = time(). '.' . $request->cover->getClientOriginalExtension();
+            $request->cover->storeAs('cover', $coverName);
+    
+            Auth::user()->cover = $coverName;
+            
+            $path = storage_path() . '/app/public/cover/'.$oldCoverPic;
             if(File::exists($path)) {
                 unlink($path);
             }

@@ -5,6 +5,8 @@
 <div class="container">
     <div class="d-flex flex-md-row flex-column">
         <div style="width: 100%" class="p-4 row d-flex flex-column align-items-center">
+            <div class="cover bg-fit {{ !Auth::user()->cover? 'bg-gradient' : '' }}" style="background-image: url({{ asset(Auth::user()->getCoverURL()) }}) !important"></div>
+
             <div class="avatar-container">
                 <div class="avatar-icon"><i class="icofont-ui-camera"></i></div>
                 <img 
@@ -84,6 +86,7 @@
 
             
             <input type="file" style="display: none" name="avatar" id="inputavatar">
+            <input type="file" style="display: none" name="cover" id="inputcover">
 
             <button class="btn float-right btn-lg btn-success float-right">save</button>
             <div class="clearfix"></div>
@@ -125,26 +128,38 @@
                 <button class="btn float-right btn-lg btn-danger float-right">delete profile</button>
         </form>
     </div>
+    
 </div>
 
 <script>
 
-const input = document.querySelector('#inputavatar')
-const avatar = document.querySelector('#avatar')
-const clickable = document.querySelector('.avatar-container')
-
-clickable.addEventListener('click', () => {
-    input.click()
-})
-
-const loadFile = function(event) {
-    avatar.src = URL.createObjectURL(event.target.files[0])
+const fileInput = (inputf, image, click, bgimage = false) => {
+    const input = document.querySelector(inputf)
+    const avatar = document.querySelector(image)
+    const clickable = document.querySelector(click)
     
-    input.onload = function() {
-        URL.revokeObjectURL(input.src)
+    clickable.addEventListener('click', () => {
+        input.click()
+    })
+    
+    const loadFile = function(event) {
+
+        if (bgimage) {
+            console.log(avatar.style.backgroundImage)
+            avatar.style.backgroundImage = `url(${URL.createObjectURL(event.target.files[0])})`
+        } else {
+            avatar.src = URL.createObjectURL(event.target.files[0])
+        }
+
+        input.onload = function() {
+            URL.revokeObjectURL(input.src)
+        }
     }
+    input.addEventListener('change', loadFile)
 }
-input.addEventListener('change', loadFile)
+
+fileInput('#inputavatar', '#avatar', '.avatar-container')
+fileInput('#inputcover', '.cover', '.cover', true)
 
 </script>
 

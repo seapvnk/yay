@@ -19,8 +19,6 @@
       @if ($status->user->id == Auth::user()->id)
         <div class="float-right">
           <a href="/status/{{ $status->id }}/delete">x</a>
-        <div class="clearfix"></div>
-        
         </div>
       @endif
 

@@ -34,4 +34,9 @@
       </p>
     </div>
     
+    @if ($reply->user->id == Auth::user()->id)
+      <span class="float-right ml-4">
+        <a href="/status/{{ $reply->id }}/delete">x</a>
+      </span>
+    @endif
 </div>

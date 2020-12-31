@@ -4,7 +4,7 @@
 @section('content')
 
     <div class="container" style="padding: 2rem">
-        <h3>Results for "<span class="text-primary">{{ Request::input('query') }}</span>"</h3>
+        <h3>Results for "<span class="text-info">{{ Request::input('query') }}</span>"</h3>
 
         @if (!$users->count())
             <div class="empty">

@@ -1,5 +1,5 @@
 <h1 align="center">Yay</h1>
-<h2 align="center">A social network made in Laravel</h2>
+<p align="center">A social network made in Laravel</p>
 
 ## Getting Started
 
